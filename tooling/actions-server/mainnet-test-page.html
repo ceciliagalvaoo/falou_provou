@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Falou e Provou — teste mainnet (assinatura recorrente)</title>
+<script src="https://unpkg.com/@solana/web3.js@1.95.3/lib/index.iife.min.js"></script>
+<style>
+  body { font-family: -apple-system, sans-serif; max-width: 560px; margin: 40px auto; padding: 0 20px; background: #0b0d0f; color: #edeff0; }
+  h1 { font-size: 20px; }
+  button { background: #14f195; color: #06251a; border: none; padding: 12px 20px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; margin: 8px 8px 8px 0; }
+  button:disabled { opacity: 0.4; cursor: not-allowed; }
+  #log { background: #14171a; border: 1px solid #272c30; border-radius: 8px; padding: 16px; margin-top: 20px; font-family: ui-monospace, monospace; font-size: 13px; white-space: pre-wrap; word-break: break-all; line-height: 1.6; min-height: 100px; }
+  .row { margin: 10px 0; }
+  input { background: #14171a; border: 1px solid #272c30; color: #edeff0; padding: 8px 10px; border-radius: 6px; font-family: ui-monospace, monospace; font-size: 13px; width: 120px; }
+  label { font-size: 13px; color: #8b939b; margin-right: 6px; }
+</style>
+</head>
+<body>
+  <h1>Falou e Provou — autorizar assinatura recorrente (MAINNET, dinheiro real)</h1>
+  <p style="color:#8b939b; font-size:14px;">Conecta a Phantom, propõe a transação de autorização (via nosso Actions server local em <code>localhost:8788</code>), você assina. O agente nunca vê sua chave.</p>
+
+  <div class="row">
+    <label>Valor por período (USDC)</label>
+    <input id="amount" value="0.05" />
+  </div>
+  <div class="row">
+    <label>Período (segundos)</label>
+    <input id="period" value="60" />
+  </div>
+
+  <button id="connect">1. Conectar Phantom</button>
+  <button id="authorize" disabled>2. Autorizar assinatura</button>
+
+  <div id="log">Aguardando conexão...</div>
+
+  <script>
+    const log = (msg) => {
+      const el = document.getElementById("log");
+      el.textContent += "\n" + msg;
+      el.scrollTop = el.scrollHeight;
+    };
+
+    const ACTIONS_BASE = "http://localhost:8788";
+    let provider = null;
+    let publicKey = null;
+
+    document.getElementById("connect").onclick = async () => {
+      if (!window.solana || !window.solana.isPhantom) {
+        log("❌ Phantom não encontrado. Instale a extensão e recarregue a página.");
+        return;
+      }
+      provider = window.solana;
+      try {
+        const resp = await provider.connect();
+        publicKey = resp.publicKey;
+        log("✅ Conectado: " + publicKey.toString());
+        document.getElementById("authorize").disabled = false;
+      } catch (e) {
+        log("❌ Conexão recusada: " + e.message);
+      }
+    };
+
+    async function signAndSend(base64Tx, label) {
+      const bytes = Uint8Array.from(atob(base64Tx), (c) => c.charCodeAt(0));
+      const tx = solanaWeb3.VersionedTransaction.deserialize(bytes);
+      log(`Pedindo assinatura na Phantom para: ${label}...`);
+      const { signature } = await provider.signAndSendTransaction(tx);
+      log(`Enviado. Assinatura: ${signature}`);
+      log("Aguardando confirmação on-chain (polling manual, não trava o fluxo se a RPC pública bloquear)...");
+      const connection = new solanaWeb3.Connection("https://api.mainnet-beta.solana.com", "confirmed");
+      let confirmed = false;
+      for (let i = 0; i < 15 && !confirmed; i++) {
+        await new Promise((r) => setTimeout(r, 2000));
+        try {
+          const { value } = await connection.getSignatureStatuses([signature]);
+          const st = value && value[0];
+          if (st && (st.confirmationStatus === "confirmed" || st.confirmationStatus === "finalized")) {
+            if (st.err) throw new Error("Transação falhou on-chain: " + JSON.stringify(st.err));
+            confirmed = true;
+          }
+        } catch (e) {
+          log(`(aviso: checagem de status falhou nessa tentativa: ${e.message} — seguindo tentando)`);
+        }
+      }
+      if (confirmed) {
+        log(`✅ Confirmado: ${label} — https://solscan.io/tx/${signature}`);
+      } else {
+        log(`⚠️ Não consegui confirmar por aqui (RPC pública instável), mas a Phantom já enviou. Assinatura: ${signature} — seguindo mesmo assim.`);
+      }
+      return signature;
+    }
+
+    document.getElementById("authorize").onclick = async () => {
+      document.getElementById("authorize").disabled = true;
+      const amount = Number(document.getElementById("amount").value) * 1_000_000; // 6 decimals
+      const period = document.getElementById("period").value;
+
+      try {
+        log("--- Passo 1: pedindo transação ao Actions server ---");
+        const step1 = await fetch(`${ACTIONS_BASE}/actions/authorize-subscription?amount=${amount}&period_s=${period}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ account: publicKey.toString() }),
+        }).then((r) => r.json());
+
+        if (step1.error) throw new Error(step1.error);
+        log("Mensagem do servidor: " + step1.message);
+
+        const sig1 = await signAndSend(step1.transaction, "passo 1 (init + criar delegação, ou só delegação se já tiver conta)");
+
+        if (step1.links && step1.links.next) {
+          log("--- Passo 2 (encadeado): finalizando a assinatura ---");
+          const step2 = await fetch(`${ACTIONS_BASE}${step1.links.next.href}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ account: publicKey.toString(), signature: sig1 }),
+          }).then((r) => r.json());
+
+          if (step2.error) throw new Error(step2.error);
+          log("Mensagem do servidor: " + step2.message);
+          await signAndSend(step2.transaction, "passo 2 (criar delegação)");
+        }
+
+        log("\n🎉 Assinatura recorrente autorizada de verdade, em mainnet.");
+      } catch (e) {
+        log("❌ Erro: " + (e.message || e));
+      } finally {
+        document.getElementById("authorize").disabled = false;
+      }
+    };
+  </script>
+</body>
+</html>

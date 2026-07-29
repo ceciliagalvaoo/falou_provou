@@ -1,0 +1,12 @@
+[
+  {
+    "key": "fornecedor-teste",
+    "name": "Fornecedor de Teste Ltda",
+    "address": "B5DDBKZkbaSHFtY8NFJ1ktdGWD5GrCZSEMZNVrMmyHGN"
+  },
+  {
+    "key": "fornecedor-mainnet-teste",
+    "name": "Fornecedor Mainnet Teste (carteira cliente reaproveitada)",
+    "address": "HTrLsm862Y3YKfBASVZK5vHXeQkQ5Difp2szKG7ziRrk"
+  }
+]

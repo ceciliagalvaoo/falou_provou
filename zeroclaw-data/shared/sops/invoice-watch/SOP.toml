@@ -1,0 +1,7 @@
+[sop]
+name = "invoice-watch"
+description = "Poll a Solana Pay reference key for a signed payment, validate amount and destination against the invoice, and transition the ledger entry from FALOU to PROVOU or NAO_PROVOU. Never advances state without a direct RPC confirmation."
+execution_mode = "auto"
+
+[[triggers]]
+type = "manual"

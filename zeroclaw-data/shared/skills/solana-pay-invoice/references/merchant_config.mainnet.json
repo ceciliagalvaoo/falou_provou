@@ -1,0 +1,8 @@
+{
+  "_comment": "Mainnet config, 2026-07-29 - real money. merchant_wallet is the operator's own real Phantom-controlled wallet (confirmed on-chain, funded with real SOL). usdc_mint is Circle's real mainnet USDC mint, independently verified against on-chain mint data (6 decimals, matching supply, matching mint/freeze authority shape) before use - never assumed from memory.",
+  "network": "mainnet",
+  "rpc_url": "https://api.mainnet-beta.solana.com",
+  "merchant_wallet": "ADmd4LkUar6BpUZxAR24jL19QHKPZFqDiVPXqP1j1GzQ",
+  "usdc_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "usdc_mint_note": "Verified 2026-07-29 via getAccountInfo: decimals=6, owner=TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA, supply=7625493513114547 base units (~7.6B USDC) - consistent with the real Circle-issued mainnet USDC mint, not assumed from a hardcoded/remembered value."
+}

@@ -1,0 +1,7 @@
+[sop]
+name = "pix-watch"
+description = "Verifies a manually-claimed Pix receipt against the real bank statement (via Pluggy) and transitions FALOU to PROVOU only from that independent read - never from the owner's own claim, a screenshot, or a forwarded notification. Same three-state discipline as invoice-watch, applied to the Pix rail (see .claude/agents/pix-rail-agent.md)."
+execution_mode = "auto"
+
+[[triggers]]
+type = "manual"

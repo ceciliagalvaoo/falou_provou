@@ -1,0 +1,7 @@
+[sop]
+name = "supplier-payment"
+description = "Owner-requested payment to a known supplier via a Solana Actions (Blink) link. The destination must resolve against the known-suppliers allowlist before anything else happens, and release of the actual payment link is gated behind an out-of-band human approval checkpoint. sop.approval_mode = out_of_band_required makes the agent's own sop_approve call incapable of clearing the gate - but it is not a silent no-op: it returns \"Denied by user.\" and the engine treats that as a genuine denial, cancelling the run. SOP.md step 2 instructs the agent to never call sop_approve/sop_advance/sop_deny on its own run for exactly this reason. The only real clearance path is an out-of-band zeroclaw sop approve/deny <run_id>, run by a human outside this chat. This SOP never writes PROVOU: sharing a link is not proof anything moved, only an independent on-chain query is - see the golden rule in evidence/prompt-injection-transcript-2026-07-28.md."
+execution_mode = "supervised"
+
+[[triggers]]
+type = "manual"

@@ -1,0 +1,309 @@
+# Template for zeroclaw-data/config.toml — the real file is gitignored
+# because it holds encrypted secrets (bot tokens, API keys) once you fill
+# them in. Copy this file to config.toml, then:
+#
+#   1. Run tooling/rewrite-install-path.sh <your_absolute_project_root>
+#      to replace every /mnt/c/Users/Inteli/Downloads/claim_chain path
+#      below with your own (see README.md "Setup").
+#   2. Fill in every REDACTED_* value with `zeroclaw config set <path> --no-interactive --config-dir zeroclaw-data`
+#      (secret fields get encrypted at rest automatically — never paste a
+#      raw token directly into this file).
+#   3. Point `[cron.subscription_pull]`'s prompt at your own devnet/mainnet
+#      delegatee key + mint before enabling it (it's `enabled = false`
+#      here on purpose — a fresh install has no agent-puller key yet).
+#
+# See README.md for the full setup walkthrough.
+
+schema_version = 3
+
+[channels]
+
+[channels.telegram.contador]
+api_base_url = "https://api.telegram.org"
+approval_timeout_secs = 120
+bot_token = "REDACTED_SET_VIA_zeroclaw_config_set_channels.telegram.contador.bot_token"
+draft_update_interval_ms = 1000
+enabled = true
+interrupt_on_new_message = false
+mention_only = false
+reply_min_interval_secs = 0
+reply_queue_depth_max = 0
+stream_mode = "off"
+excluded_tools = []
+
+[peer_groups.telegram_contador]
+admin_for_agent_scope = false
+agents = []
+channel = "telegram.contador"
+external_peers = ["REPLACE_WITH_YOUR_TELEGRAM_USER_ID"]
+ignore = []
+output_modality = "mirror"
+
+[cron.subscription_pull]
+enabled = false
+job_type = "agent"
+uses_memory = true
+name = "Subscription pull (one client per tick, rotating)"
+session_target = "isolated"
+prompt = "Run this exact absolute path via the shell tool, do not search for it: node /mnt/c/Users/Inteli/Downloads/claim_chain/zeroclaw-data/shared/sops/subscription-pull/scripts/list_delegations.mjs --rpc-url https://api.devnet.solana.com --delegatee REPLACE_WITH_YOUR_AGENT_PULLER_PUBKEY --mint REPLACE_WITH_YOUR_TEST_USDC_MINT --pick-one-every-ms 60000 . It ALWAYS prints a JSON array with at most ONE entry (a deterministic rotation across all active clients, one per tick - this is intentional, not a bug: dispatching multiple clients from inside one turn was found to silently orphan most of them, so this cron now processes exactly one client per tick). If the array is empty, there is nothing to do this cycle, stop - do not call sop_execute. Otherwise call sop_execute exactly ONCE with name=\"subscription-pull\" and payload={\"invoice_label\":\"<last 8 characters of that entry's delegation_pda>\",\"delegation_pda\":\"<that entry's delegation_pda>\",\"delegator\":\"<that entry's delegator>\",\"delegator_ata\":\"<that entry's delegator_ata>\",\"receiver_ata\":\"REPLACE_WITH_YOUR_MERCHANT_ATA\",\"mint\":\"REPLACE_WITH_YOUR_TEST_USDC_MINT\",\"token_program\":\"TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA\",\"pull_amount\":\"<that entry's pull_amount>\",\"rpc_url\":\"https://api.devnet.solana.com\"}. Then actually complete that run's steps by following whatever instructions sop_execute's own response gives you, all the way through to a final PROVOU/NAO_PROVOU/FALOU record, before ending your turn. Do not call sop_execute a second time in this turn."
+
+[cron.subscription_pull.schedule]
+kind = "every"
+every_ms = 60000
+
+[runtime_profiles.core]
+agentic = false
+max_actions_per_hour = 200
+max_cost_per_day_cents = 500
+max_delegation_depth = 0
+max_tool_iterations = 0
+shell_timeout_secs = 1200
+strict_tool_parsing = false
+
+[agents.dono.workspace.access]
+
+[runtime_profiles.core.context_compression]
+enabled = false
+identifier_policy = "strict"
+max_passes = 3
+protect_first_n = 3
+protect_last_n = 4
+source_max_chars = 50000
+summary_max_chars = 4000
+threshold_ratio = 0.5
+timeout_secs = 60
+tool_result_retrim_chars = 2000
+
+[peer_groups.telegram_dono]
+admin_for_agent_scope = false
+agents = []
+channel = "telegram.dono"
+external_peers = ["REPLACE_WITH_YOUR_TELEGRAM_USER_ID"]
+ignore = []
+output_modality = "mirror"
+
+[runtime_profiles.core.eval]
+enabled = false
+max_retries = 1
+min_quality_score = 0.5
+
+[channels.telegram.dono]
+api_base_url = "https://api.telegram.org"
+approval_timeout_secs = 120
+bot_token = "REDACTED_SET_VIA_zeroclaw_config_set_channels.telegram.dono.bot_token"
+draft_update_interval_ms = 1000
+enabled = true
+interrupt_on_new_message = false
+mention_only = false
+reply_min_interval_secs = 0
+reply_queue_depth_max = 0
+stream_mode = "off"
+excluded_tools = []
+
+[runtime_profiles.core.history_pruning]
+collapse_tool_results = true
+enabled = false
+keep_recent = 4
+max_tokens = 8192
+
+[providers.models.anthropic.default]
+api_key = "REDACTED_SET_VIA_zeroclaw_config_set_providers.models.anthropic.default.api_key"
+model = "claude-sonnet-4-5"
+
+[runtime_profiles.core.thinking]
+default_level = "medium"
+native_thinking = false
+
+[skill_bundles.core]
+directory = "/mnt/c/Users/Inteli/Downloads/claim_chain/zeroclaw-data/shared/skills"
+exclude = []
+include = []
+
+[runtime_profiles.core.tool_receipts]
+enabled = false
+inject_system_prompt = true
+show_in_response = false
+
+[agents.dono]
+acp_enable_mcp = false
+delegate_same_risk_profile = true
+enabled = true
+risk_profile = "core"
+channels = ["telegram.dono"]
+skill_bundles = ["core"]
+model_provider = "anthropic.default"
+classifier_provider = ""
+cron_jobs = ["subscription_pull"]
+delegates = []
+knowledge_bundles = []
+mcp_bundles = []
+runtime_profile = "core"
+summary_provider = ""
+transcription_provider = ""
+tts_provider = ""
+
+[risk_profiles.core]
+allowed_commands = ["git", "npm", "cargo", "ls", "cat", "grep", "find", "echo", "pwd", "wc", "head", "tail", "date", "df", "du", "uname", "uptime", "hostname", "python", "python3", "pip", "node", "free"]
+auto_approve = ["file_read", "memory_recall", "memory_store", "http_request", "shell", "calculator", "glob_search", "content_search", "tool_search", "sop_execute", "sop_advance", "sop_status", "sop_step_complete", "sop_continue", "todo_write"]
+block_high_risk_commands = true
+forbidden_paths = ["/etc", "/root", "/home", "/usr", "/bin", "/sbin", "/lib", "/opt", "/boot", "/dev", "/proc", "/sys", "/var", "/tmp", "~/.ssh", "~/.gnupg", "~/.aws", "~/.config"]
+level = "supervised"
+require_approval_for_medium_risk = true
+workspace_only = true
+allowed_roots = ["/mnt/c/Users/Inteli/Downloads/claim_chain/zeroclaw-data/shared"]
+allowed_tools = []
+always_ask = []
+excluded_tools = []
+firejail_args = []
+shell_env_passthrough = []
+
+[agents.dono.a2a]
+published = false
+exposed_skills = []
+
+[channels.whatsapp]
+
+[agents.dono.identity]
+format = "openclaw"
+
+[risk_profiles.core.delegation_policy]
+mode = "forbidden"
+
+[gateway]
+paired_tokens = ["REDACTED_SET_VIA_zeroclaw_config_set_gateway.paired_tokens"]
+
+[cron]
+
+[observability]
+
+[runtime_profiles]
+
+[reliability]
+provider_retries = 6
+
+[security]
+
+[security.leak_detection]
+high_entropy_tokens = false
+enabled = false
+
+[shell_tool]
+timeout_secs = 1200
+
+[providers]
+
+[providers.models]
+
+[providers.models.anthropic]
+
+[memory]
+search_mode = "bm25"
+
+[sop]
+sops_dir = "/mnt/c/Users/Inteli/Downloads/claim_chain/zeroclaw-data/shared/sops"
+max_step_retries = 45
+persist_runs = true
+max_concurrent_total = 20
+approval_mode = "out_of_band_required"
+
+[skill_bundles]
+
+[http_request]
+allowed_domains = ["api.devnet.solana.com", "olinda.bcb.gov.br"]
+
+[agents]
+
+[agents.dono.memory]
+backend = "sqlite"
+
+[channels.whatsapp.dono]
+approval_timeout_secs = 0
+dm_policy = "all"
+enabled = false
+group_policy = "allowlist"
+interrupt_on_new_message = false
+mention_only = false
+mode = "business"
+passive_group_context = false
+reply_min_interval_secs = 0
+reply_queue_depth_max = 0
+self_chat_mode = true
+session_path = "/mnt/c/Users/Inteli/Downloads/claim_chain/zeroclaw-data/whatsapp-session"
+allowed_groups = []
+dm_mention_patterns = []
+excluded_tools = []
+group_mention_patterns = []
+
+[channels.telegram]
+
+[agents.dono.precheck]
+enabled = false
+timeout_secs = 5
+
+[risk_profiles]
+
+[agents.dono.workspace]
+unrestricted_filesystem = false
+read_memory_from = []
+
+# --- Accountant / dossier agent (pix-rail-agent.md deliverable 2) ---
+# Structurally read-only by construction: empty skill_bundles, shell and
+# memory_store excluded from its risk profile, no funds-moving tool in its
+# registry at all. It can only ever recall memory (read-only, cross-agent
+# via workspace.read_memory_from) and call the public PTAX endpoint.
+
+[agents.contador]
+acp_enable_mcp = false
+delegate_same_risk_profile = true
+enabled = true
+risk_profile = "contador"
+channels = ["telegram.contador"]
+skill_bundles = []
+model_provider = "anthropic.default"
+classifier_provider = ""
+cron_jobs = []
+delegates = []
+knowledge_bundles = []
+mcp_bundles = []
+runtime_profile = "core"
+summary_provider = ""
+transcription_provider = ""
+tts_provider = ""
+
+[agents.contador.workspace]
+unrestricted_filesystem = false
+read_memory_from = ["dono"]
+
+[agents.contador.workspace.access]
+
+[agents.contador.memory]
+backend = "sqlite"
+
+[agents.contador.identity]
+format = "openclaw"
+
+[agents.contador.a2a]
+published = false
+exposed_skills = []
+
+[agents.contador.precheck]
+enabled = false
+timeout_secs = 5
+
+[risk_profiles.contador]
+allowed_commands = []
+auto_approve = ["memory_recall", "http_request", "calculator", "tool_search", "todo_write"]
+block_high_risk_commands = true
+forbidden_paths = ["/etc", "/root", "/home", "/usr", "/bin", "/sbin", "/lib", "/opt", "/boot", "/dev", "/proc", "/sys", "/var", "/tmp", "~/.ssh", "~/.gnupg", "~/.aws", "~/.config"]
+level = "supervised"
+require_approval_for_medium_risk = true
+workspace_only = true
+allowed_roots = []
+allowed_tools = []
+always_ask = []
+excluded_tools = ["shell", "memory_store", "sop_execute", "sop_advance", "sop_status", "sop_step_complete", "sop_continue", "file_read", "glob_search", "content_search"]
+firejail_args = []
+shell_env_passthrough = []
+
+[risk_profiles.contador.delegation_policy]
+mode = "forbidden"

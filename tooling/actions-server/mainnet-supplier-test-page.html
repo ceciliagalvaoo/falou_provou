@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Falou e Provou — pagar fornecedor (teste mainnet)</title>
+<script src="https://unpkg.com/@solana/web3.js@1.95.3/lib/index.iife.min.js"></script>
+<style>
+  body { font-family: -apple-system, sans-serif; max-width: 560px; margin: 40px auto; padding: 0 20px; background: #0b0d0f; color: #edeff0; }
+  h1 { font-size: 20px; }
+  button { background: #14f195; color: #06251a; border: none; padding: 12px 20px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; margin: 8px 8px 8px 0; }
+  button:disabled { opacity: 0.4; cursor: not-allowed; }
+  #log { background: #14171a; border: 1px solid #272c30; border-radius: 8px; padding: 16px; margin-top: 20px; font-family: ui-monospace, monospace; font-size: 13px; white-space: pre-wrap; word-break: break-all; line-height: 1.6; min-height: 100px; }
+  .row { margin: 10px 0; }
+  input { background: #14171a; border: 1px solid #272c30; color: #edeff0; padding: 8px 10px; border-radius: 6px; font-family: ui-monospace, monospace; font-size: 13px; width: 220px; }
+  label { font-size: 13px; color: #8b939b; margin-right: 6px; display: block; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+  <h1>Falou e Provou — pagar fornecedor (MAINNET, dinheiro real)</h1>
+  <p style="color:#8b939b; font-size:14px;">Conecta a Phantom (use a carteira do <b>comerciante</b>), pede o pagamento pro Actions server local, você assina. Endereço fora da allowlist é recusado pelo servidor antes de qualquer transação ser montada.</p>
+
+  <div class="row">
+    <label>Chave do fornecedor (known-suppliers.json)</label>
+    <input id="supplier" value="fornecedor-mainnet-teste" />
+  </div>
+  <div class="row">
+    <label>Valor (base units, 6 decimais — 400 = 0.0004 USDC)</label>
+    <input id="amount" value="200" />
+  </div>
+
+  <button id="connect">1. Conectar Phantom (comerciante)</button>
+  <button id="pay" disabled>2. Pagar fornecedor</button>
+
+  <div id="log">Aguardando conexão...</div>
+
+  <script>
+    const log = (msg) => {
+      const el = document.getElementById("log");
+      el.textContent += "\n" + msg;
+      el.scrollTop = el.scrollHeight;
+    };
+
+    const ACTIONS_BASE = "http://localhost:8788";
+    let provider = null;
+    let publicKey = null;
+
+    document.getElementById("connect").onclick = async () => {
+      if (!window.solana || !window.solana.isPhantom) {
+        log("❌ Phantom não encontrado. Instale a extensão e recarregue a página.");
+        return;
+      }
+      provider = window.solana;
+      try {
+        const resp = await provider.connect();
+        publicKey = resp.publicKey;
+        log("✅ Conectado: " + publicKey.toString());
+        document.getElementById("pay").disabled = false;
+      } catch (e) {
+        log("❌ Conexão recusada: " + e.message);
+      }
+    };
+
+    document.getElementById("pay").onclick = async () => {
+      document.getElementById("pay").disabled = true;
+      const supplier = document.getElementById("supplier").value;
+      const amount = document.getElementById("amount").value;
+
+      try {
+        log("--- Pedindo transação ao Actions server ---");
+        const resp = await fetch(`${ACTIONS_BASE}/actions/pay-supplier?supplier=${encodeURIComponent(supplier)}&amount=${amount}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ account: publicKey.toString() }),
+        }).then((r) => r.json());
+
+        if (resp.error) throw new Error(resp.error);
+        log("Servidor aceitou. Montando transação...");
+
+        const bytes = Uint8Array.from(atob(resp.transaction), (c) => c.charCodeAt(0));
+        const tx = solanaWeb3.VersionedTransaction.deserialize(bytes);
+        log("Pedindo assinatura na Phantom...");
+        const { signature } = await provider.signAndSendTransaction(tx);
+        log(`✅ Enviado. Assinatura: ${signature}`);
+        log(`https://solscan.io/tx/${signature}`);
+        log("\n(a confirmação final será checada de fora da página, direto na chain)");
+      } catch (e) {
+        log("❌ Erro: " + (e.message || e));
+      } finally {
+        document.getElementById("pay").disabled = false;
+      }
+    };
+  </script>
+</body>
+</html>

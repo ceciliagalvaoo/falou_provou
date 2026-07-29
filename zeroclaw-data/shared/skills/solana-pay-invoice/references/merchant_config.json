@@ -1,0 +1,8 @@
+{
+  "_comment": "Devnet test config for Layer 0 development. On mainnet migration (schedule day 6), merchant_wallet must point at the operator's real funded wallet and usdc_mint must be verified against the official Circle mainnet USDC mint before use - never hardcode an unverified mint address.",
+  "network": "devnet",
+  "rpc_url": "https://api.devnet.solana.com",
+  "merchant_wallet": "Mpo5LXfm1Qd77iVT3oUuD9bPFXD7F4CVebcPWprvDst",
+  "usdc_mint": "Hm48r4majxKMNzBBDP13KnUcW6C612sPTTd9MuKfTFi2",
+  "usdc_mint_note": "This is a locally-created SPL test token (6 decimals) on devnet, NOT Circle's real USDC - devnet has no canonical USDC mint verified by this project yet. Swap for the real mainnet USDC mint (verify first) before day 6."
+}

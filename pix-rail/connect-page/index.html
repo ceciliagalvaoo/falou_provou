@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Falou e Provou — conectar banco (Pix)</title>
+<script src="https://cdn.pluggy.ai/pluggy-connect/v2.7.0/pluggy-connect.js"></script>
+<style>
+  body { font-family: -apple-system, sans-serif; max-width: 480px; margin: 60px auto; padding: 0 20px; background: #0b0d0f; color: #edeff0; text-align: center; }
+  button { background: #ef294b; color: #fff; border: none; padding: 14px 24px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 20px; }
+  #log { background: #14171a; border: 1px solid #272c30; border-radius: 8px; padding: 16px; margin-top: 24px; font-family: ui-monospace, monospace; font-size: 12px; text-align: left; white-space: pre-wrap; word-break: break-all; min-height: 60px; }
+  p { color: #8b939b; font-size: 14px; }
+</style>
+</head>
+<body>
+  <h1>Falou e Provou — conectar seu banco</h1>
+  <p>Isso é um passo único. No ambiente de teste (sandbox), escolha o banco "Pluggy Bank" e use usuário <code>user-ok</code> e senha <code>password-ok</code>. Depois disso, seu Pix é lido automaticamente pelo agente, direto no Telegram.</p>
+  <button id="start">Conectar banco</button>
+  <div id="log"></div>
+
+  <script>
+    const log = (msg) => {
+      document.getElementById("log").textContent += msg + "\n";
+    };
+
+    document.getElementById("start").onclick = async () => {
+      log("Pedindo connect token...");
+      const resp = await fetch("http://localhost:8791/connect-token").then((r) => r.json());
+      if (resp.error) { log("❌ " + resp.error); return; }
+      log("Token obtido. Abrindo widget...");
+
+      const pluggyConnect = new PluggyConnect({
+        connectToken: resp.accessToken,
+        includeSandbox: true,
+        connectorIds: [2], // "Pluggy Bank" - o conector de sandbox estável, sempre online
+        products: ["ACCOUNTS", "TRANSACTIONS"], // scope enforced here, per Pluggy's own docs (docs.pluggy.ai/docs/glossary) - read-only, explicitly excludes PAYMENT_INITIATION and any other product
+        onSuccess: (itemData) => {
+          log("✅ Conectado! Item ID: " + itemData.item.id);
+          log("Guarde esse Item ID — é ele que o agente vai usar pra ler seu extrato.");
+        },
+        onError: (error) => {
+          log("❌ Erro: " + JSON.stringify(error));
+        },
+      });
+      pluggyConnect.init();
+    };
+  </script>
+</body>
+</html>

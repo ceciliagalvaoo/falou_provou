@@ -1,0 +1,17 @@
+{
+  "name": "subscriptions-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@solana/kit": "^6.10.0",
+    "@solana/subscriptions": "^0.4.0"
+  }
+}

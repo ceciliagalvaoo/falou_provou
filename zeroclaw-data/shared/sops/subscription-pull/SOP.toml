@@ -1,0 +1,22 @@
+[sop]
+name = "subscription-pull"
+description = "Periodically checks one client's recurring delegation for due allowance and executes a capped pull, with the same FALOU/PROVOU/NAO_PROVOU discipline as invoice-watch. The agent-puller keypair only ever signs a transfer_recurring call; the on-chain program enforces the per-period cap, not this code."
+execution_mode = "auto"
+max_concurrent = 10
+# Default max_concurrent=1 meant the multi-client cron loop (list_delegations.mjs
+# + one sop_execute per client) dropped every client after the first with
+# "cooldown or concurrency limit reached" - confirmed via zeroclaw doctor
+# traces, 2026-07-28. Each client's pull is an independent run against a
+# different delegation PDA; there is no reason one client's pull should block
+# another's. Raised to comfortably exceed a solo operator's realistic client
+# count. admission_policy stays at its "parallel" default (admit up to
+# max_concurrent, defer/log rather than corrupt state past that).
+
+[[triggers]]
+type = "manual"
+# NOTE: SOP-native `cron` triggers are defined in the ZeroClaw schema but are
+# NOT wired to any live event source in v0.8.3 (confirmed against
+# docs/book/src/sop/fan-in/overview.md's own troubleshooting table - cron is
+# listed there as unwired, alongside webhook/peripheral/calendar). This SOP
+# is started via `sop_execute` from a top-level `[cron.subscription_pull]`
+# agent-type job instead - that cron mechanism IS live.
