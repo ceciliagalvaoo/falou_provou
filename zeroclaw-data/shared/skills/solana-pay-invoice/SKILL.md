@@ -29,6 +29,16 @@ comes from the `invoice-watch` SOP querying the chain directly.
    otherwise it is still FALOU), and ask whether they want a different
    invoice id or to resend the existing `solana_pay_url`.
 
+   If the owner instead explicitly asks to re-check/re-verify an existing
+   FALOU invoice (e.g. "verifica a fatura teste de novo", "já paguei,
+   confere"), do **not** re-run step 3 at all — reuse the exact
+   `reference_pubkey` and other fields already stored under
+   `invoice_<invoice_id>_solana` and go straight to step 6 with those
+   values. This is also the correct recovery if a prior `sop_execute` call
+   is suspected to have used a different reference than the one actually
+   shown to the client (skip to step 6 using the stored memory record as
+   the single source of truth, never a value from conversation history).
+
 3. Run the invoice script via the shell tool (use this exact absolute path,
    do not search for it):
    ```
@@ -40,6 +50,20 @@ comes from the `invoice-watch` SOP querying the chain directly.
    `qr_image_path` (may be null if QR rendering failed — that is not an
    error, the text URL still works), `merchant_wallet`, `usdc_mint`,
    `rpc_url`, and `state: "FALOU"`.
+
+   **If this call is blocked or errors, do not just run it again and move
+   on with a fresh result — every invocation generates a brand-new, random
+   `reference_pubkey`, so two invocations for the same invoice id produce
+   two DIFFERENT references.** A real incident: the shell call was blocked
+   once (a security-policy path issue, since fixed), the agent retried and
+   got a second, different reference, then used the *first* attempt's
+   reference for `memory_store`/the reply shown to the client but the
+   *second* attempt's reference for `sop_execute` — so the SOP was watching
+   a reference nobody would ever pay to, and the invoice would have falsely
+   timed out to NÃO PROVOU no matter what the client actually did. If a
+   retry is genuinely needed, only the LAST successful invocation's output
+   is real — copy its `reference_pubkey` into *both* step 4 and step 6, and
+   never let an earlier attempt's value leak into either one.
 
 4. Call `memory_store` (category `daily`, tags `rail=solana`, `invoice_id`,
    `state=FALOU`) with the full JSON from step 3, verbatim. This is the only
