@@ -23,6 +23,24 @@ after real approval).
   SOP's `amount` payload field, which is in base units — same convention as
   `subscription-authorize-link`)
 
+**Always actually run steps 1-3 below for every new payment request, even
+if a very similar or identical-looking request (same supplier, same or
+similar amount) was made before and you can see how that earlier one
+turned out.** A real, serious incident (2026-07-29): after a real
+supplier-payment run had genuinely completed (checkpoint cleared, link
+shared, `PROVOU`/`FALOU` recorded), a follow-up request for the same
+supplier and a similar amount got a reply presenting a "ready" payment
+link — built entirely from `sop_status`/`memory_recall` on the *previous*
+run, with `sop_execute` never called at all. That means the mandatory
+human out-of-band approval checkpoint (SOP step 2) never fired for that
+new request — the single most important safety property this flow has.
+Recalling history to answer "what happened last time" is fine when
+explicitly asked; silently reusing it to skip a **new** request straight
+to a shared payment link is not, ever. Every payment request is a new
+request and needs its own real `sop_execute` call and its own real
+checkpoint clearance, no exceptions, no matter how recent or similar the
+last one was.
+
 ## Steps
 
 1. Extract from the request: a `supplier_key` (match against how the owner
