@@ -70,7 +70,7 @@ def main():
         if not step3:
             continue  # never reached link-sharing, nothing to backfill (correctly stayed unrecorded)
 
-        link_match = re.search(r"http://localhost:8787/actions/pay-supplier\?supplier=([^&\s`]+)&amount=(\d+)", step3.get("output", ""))
+        link_match = re.search(r"https://163-176-158-36.nip.io/actions/pay-supplier\?supplier=([^&\s`]+)&amount=(\d+)", step3.get("output", ""))
         if not link_match:
             continue  # can't extract real data, skip rather than guess
 
@@ -85,7 +85,7 @@ def main():
             "state": "FALOU",
             "supplier_key": supplier_key,
             "amount": amount,
-            "link": f"http://localhost:8787/actions/pay-supplier?supplier={supplier_key}&amount={amount}",
+            "link": f"https://163-176-158-36.nip.io/actions/pay-supplier?supplier={supplier_key}&amount={amount}",
             "channel_session_id": payload.get("channel_session_id"),
             "rail": "solana",
             "kind": "supplier_payment",

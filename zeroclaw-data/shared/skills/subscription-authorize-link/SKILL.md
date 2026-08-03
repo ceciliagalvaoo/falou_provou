@@ -23,7 +23,7 @@ their own wallet app.
 `evidence/layer1-blinks.md` — do not hardcode these anywhere else, read them
 from here)
 
-- Actions server base: `http://localhost:8787`
+- Actions server base: `https://163-176-158-36.nip.io`
 - USDC-test mint decimals: 6 (multiply a human amount by 1,000,000 for the
   `amount` query param, which is in base units)
 - Default period, if the owner does not specify one: 30 days (`period_s=2592000`)
@@ -46,7 +46,7 @@ from here)
    (6 decimals) and rounding to the nearest integer.
 
 3. Build the link exactly as:
-   `http://localhost:8787/actions/authorize-subscription?amount=<base_units>&period_s=<period_s>&expiry_s=<expiry_s>`
+   `https://163-176-158-36.nip.io/actions/authorize-subscription?amount=<base_units>&period_s=<period_s>&expiry_s=<expiry_s>`
 
 4. Call `memory_store` (category `daily`, tags `rail=solana`,
    `kind=subscription_authorize_link`, `client_label`) with
