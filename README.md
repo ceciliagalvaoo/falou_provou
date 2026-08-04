@@ -11,10 +11,27 @@ never records anything it did not verify at the source.
 validation, deployment, reproducibility):**
 **[ceciliagalvaoo.github.io/falou_provou](https://ceciliagalvaoo.github.io/falou_provou/)**
 
+**Landing page:** **[falou-provou.onrender.com](https://falou-provou.onrender.com)**
+
 ## The product, live
 
 The product is two Telegram bots, running 24/7 on a public server, not a
-local demo:
+local demo. Scan to open one on your own phone:
+
+<table>
+<tr>
+<td align="center">
+<img src="landing/assets/qr-dono.svg" width="140" height="140" alt="QR code linking to @falouprovou_bot on Telegram"><br>
+<strong><a href="https://t.me/falouprovou_bot">@falouprovou_bot</a></strong><br>
+<sub>owner — billing, subscriptions, Pix</sub>
+</td>
+<td align="center">
+<img src="landing/assets/qr-contador.svg" width="140" height="140" alt="QR code linking to @falouprovou_contador_bot on Telegram"><br>
+<strong><a href="https://t.me/falouprovou_contador_bot">@falouprovou_contador_bot</a></strong><br>
+<sub>accountant — read-only dossier</sub>
+</td>
+</tr>
+</table>
 
 - **[@falouprovou_bot](https://t.me/falouprovou_bot)** — `dono`, the owner's
   agent. Bills invoices, authorizes/collects recurring subscriptions, pays

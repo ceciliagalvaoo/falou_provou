@@ -11,6 +11,8 @@ slug: /
 
 Built for the Superteam Brasil bounty **"Build Solana-native plugins for Zeroclaw."**
 
+**Landing page:** [falou-provou.onrender.com](https://falou-provou.onrender.com)
+
 ## The golden rule
 
 Every ledger entry, on either rail, has exactly one of three states:
@@ -31,6 +33,25 @@ The actual product is two Telegram bots, each with a completely different role a
 
 - **`dono`** (owner) — the product surface. Bills one-time invoices via Solana Pay, authorizes and executes recurring subscriptions within a cap enforced by the on-chain program itself (never an unbounded key), pays known suppliers via Solana Blinks with mandatory human approval outside the chat, and logs Pix receipts that only become PROVOU after being checked against the real bank statement.
 - **`contador`** (accountant) — the accountant's dossier. Answers "how much has been consolidated this week?" by combining both rails into BRL, and is **structurally incapable of moving money** — not because it "chooses not to," but because that capability simply does not exist in its tool registry. This was tested with a real prompt-injection attack (see [Security](/security)).
+
+### Try it yourself — scan to open a bot
+
+Both are live right now, not a mockup.
+
+<table>
+<tr>
+<td align="center">
+<img src="/falou_provou/img/qr-dono.svg" width="140" height="140" alt="QR code linking to @falouprovou_bot on Telegram" /><br/>
+<strong><a href="https://t.me/falouprovou_bot">@falouprovou_bot</a></strong><br/>
+<sub>owner — billing, subscriptions, Pix</sub>
+</td>
+<td align="center">
+<img src="/falou_provou/img/qr-contador.svg" width="140" height="140" alt="QR code linking to @falouprovou_contador_bot on Telegram" /><br/>
+<strong><a href="https://t.me/falouprovou_contador_bot">@falouprovou_contador_bot</a></strong><br/>
+<sub>accountant — read-only dossier</sub>
+</td>
+</tr>
+</table>
 
 ## Where to start
 
