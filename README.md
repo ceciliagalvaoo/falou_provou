@@ -1,8 +1,31 @@
 # Falou e Provou (Claim & Chain)
 
+Built for the Superteam Brasil bounty **"Build Solana-native plugins for
+Zeroclaw."**
+
 A self-hosted [ZeroClaw](https://github.com/zeroclaw-labs/zeroclaw) agent
 that bills in two rails — **USDC on Solana** and **Pix in BRL** — and
 never records anything it did not verify at the source.
+
+**Full documentation (architecture, user flows, security, real-world
+validation, deployment, reproducibility):**
+**[ceciliagalvaoo.github.io/falou_provou](https://ceciliagalvaoo.github.io/falou_provou/)**
+
+## The product, live
+
+The product is two Telegram bots, running 24/7 on a public server, not a
+local demo:
+
+- **[@falouprovou_bot](https://t.me/falouprovou_bot)** — `dono`, the owner's
+  agent. Bills invoices, authorizes/collects recurring subscriptions, pays
+  suppliers, logs Pix receipts.
+- **[@falouprovou_contador_bot](https://t.me/falouprovou_contador_bot)** —
+  `contador`, the accountant's read-only dossier agent.
+
+Everything in this repo has been run against **real Solana mainnet-beta
+transactions with real money**, not only devnet/sandbox — see
+[Real-world validation](https://ceciliagalvaoo.github.io/falou_provou/validation)
+for the actual signatures.
 
 Every ledger entry, on either rail, has exactly one of three states:
 
@@ -144,10 +167,13 @@ tooling/subscriptions-test/  isolated devnet tests for the recurring-delegation 
 
 ## Known limitations (disclosed, not hidden)
 
-- **The Actions/Blinks server is `localhost`-only.** No public hosting is
-  set up yet — this project deliberately finished the product itself
-  before starting on deployment. Standing it up behind a real domain with
-  TLS is the next step, not yet done.
+Full write-up, including the most significant one (an out-of-band SOP
+approval gap) and a real incident that shaped this project's design (a
+model swap that once broke the golden rule), is in
+[Known limitations](https://ceciliagalvaoo.github.io/falou_provou/limitations)
+and [Security](https://ceciliagalvaoo.github.io/falou_provou/security) on
+the docs site. In short, locally:
+
 - **`contador`'s Telegram channel needs its own bot token** (see Setup
   step 2) — without one it's still fully testable via
   `zeroclaw agent -a contador -m "..."` (no channel required), which is

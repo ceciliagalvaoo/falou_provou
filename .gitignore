@@ -16,3 +16,4 @@ __pycache__/
 *.pyc
 pix-rail/.env
 pix-rail/credentials.json
+evidence/
