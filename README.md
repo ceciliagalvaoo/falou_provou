@@ -3,7 +3,7 @@
 Built for the Superteam Brasil bounty **"Build Solana-native plugins for
 Zeroclaw."**
 
-A self-hosted [ZeroClaw](https://github.com/zeroclaw-labs/zeroclaw) agent
+An operator-hosted [ZeroClaw](https://github.com/zeroclaw-labs/zeroclaw) agent
 that bills in two rails — **USDC on Solana** and **Pix in BRL** — and
 never records anything it did not verify at the source.
 
@@ -173,7 +173,11 @@ tooling/subscriptions-test/  isolated devnet tests for the recurring-delegation 
    ```
    cd tooling/actions-server && npm install && node server.mjs
    ```
-   It's `localhost`-only by default — see "Known limitations" below.
+   It's `localhost`-only by default for a fresh local reproduction like this
+   one — the live, publicly-hosted deployment runs the same server behind
+   real HTTPS; see
+   [Deployment](https://ceciliagalvaoo.github.io/falou_provou/deployment)
+   for how.
 
 5. **Start the daemon.**
    ```

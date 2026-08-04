@@ -51,7 +51,7 @@ echo
 #    packages' own docs contain unrelated paths that must not be touched)
 #    and evidence/ (historical record, not live config).
 FILES=$(grep -rl "$OLD_PATH" \
-  --include="*.toml" --include="*.md" --include="*.mjs" --include="*.py" \
+  --include="*.toml" --include="*.toml.example" --include="*.md" --include="*.mjs" --include="*.py" \
   "$PROJECT_ROOT" 2>/dev/null \
   | grep -v "/node_modules/" \
   | grep -v "/evidence/" \
