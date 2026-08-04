@@ -165,12 +165,14 @@ tooling/subscriptions-test/  isolated devnet tests for the recurring-delegation 
    Message your `dono` bot on Telegram. Message your `contador` bot
    separately to test the read-only dossier.
 
-## Known limitations (disclosed, not hidden)
+## Bugs found & fixed, and what's still open (disclosed, not hidden)
 
-Full write-up, including the most significant one (an out-of-band SOP
-approval gap) and a real incident that shaped this project's design (a
-model swap that once broke the golden rule), is in
-[Known limitations](https://ceciliagalvaoo.github.io/falou_provou/limitations)
+Dozens of real bugs were found during live testing against the running
+system — most are already fixed and documented with their root cause,
+including the incident that shaped this project's design most (a model
+swap that once broke the golden rule). A handful of things are genuinely
+still open, each with a concrete reason it isn't closed yet. Full record:
+[Bugs found & fixed](https://ceciliagalvaoo.github.io/falou_provou/limitations)
 and [Security](https://ceciliagalvaoo.github.io/falou_provou/security) on
 the docs site. In short, locally:
 
@@ -195,3 +197,8 @@ the docs site. In short, locally:
   against Pluggy's sandbox connector, by design — a real bank connection
   is optional and was never required for this to be a genuine, complete
   integration.
+
+## Authors
+
+- **Cecília Galvão** — [@ceciliagalvaoo](https://github.com/ceciliagalvaoo)
+- **Pablo Azevedo** — [@zzaved](https://github.com/zzaved)

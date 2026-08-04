@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Falou e Provou',
   tagline: 'An agent that only records what it can actually prove',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo.svg',
 
   future: {
     v4: true,
@@ -85,6 +85,13 @@ const config: Config = {
           title: 'Project',
           items: [
             {label: 'GitHub repository', href: 'https://github.com/ceciliagalvaoo/falou_provou'},
+          ],
+        },
+        {
+          title: 'Authors',
+          items: [
+            {label: 'Cecília Galvão (@ceciliagalvaoo)', href: 'https://github.com/ceciliagalvaoo'},
+            {label: 'Pablo Azevedo (@zzaved)', href: 'https://github.com/zzaved'},
           ],
         },
       ],

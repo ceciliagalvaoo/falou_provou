@@ -38,6 +38,11 @@ The actual product is two Telegram bots, each with a completely different role a
 - [**User flows**](/user-flows) — what a real person types and what should happen, step by step.
 - [**Security**](/security) — the custody model, real attacks tested, and the incident that shaped the whole project.
 - [**Real-world validation**](/validation) — real mainnet signatures, not a simulation.
-- [**Known limitations**](/limitations) — what still doesn't work perfectly, said plainly.
+- [**Bugs found & fixed**](/limitations) — the real bugs found during testing, how each was fixed, and the few things still genuinely open.
 - [**Deployment**](/deployment) — how and where this actually runs, 24/7.
 - [**Reproducibility**](/reproducibility) — how to run this from scratch on another machine.
+
+## Authors
+
+- **Cecília Galvão** — [@ceciliagalvaoo](https://github.com/ceciliagalvaoo)
+- **Pablo Azevedo** — [@zzaved](https://github.com/zzaved)
