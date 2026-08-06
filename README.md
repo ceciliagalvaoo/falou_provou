@@ -37,7 +37,19 @@ for the actual signatures.
 ## The product, live
 
 The product is two Telegram bots, running 24/7 on a public server, not a
-local demo. Scan to open one on your own phone:
+local demo.
+
+**They only answer people the operator has bound**, and that is deliberate:
+peer groups in ZeroClaw are mutual opt-in and deny by default, so a billing
+agent that took messages from strangers would be a custody failure rather than
+a demonstration. Scanning a code below opens the chat and the bot will tell you
+it needs approval. Ask us and we will bind your id.
+
+What you can check **without asking anyone**, right now, is the chain itself:
+the mainnet signature in
+[Real-world validation](https://ceciliagalvaoo.github.io/falou_provou/docs/evidence/validation)
+opens in any public block explorer. That is the only kind of proof this product
+would accept from someone else, so it is the one it offers.
 
 <table>
 <tr>

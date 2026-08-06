@@ -56,9 +56,19 @@ completamente diferentes:
   Isso foi testado com um ataque real de prompt injection (veja
   [Segurança e custódia](./how-it-works/security.md)).
 
-### Experimente você mesmo: aponte a câmera e abra um bot
+### Os dois bots, e com quem eles falam
 
-Os dois estão no ar agora, não é maquete.
+Os dois estão no ar agora, não é maquete. **E os dois recusam quem o operador
+não vinculou**, o que é de propósito e não limitação: os peer groups do ZeroClaw
+são opt-in mútuo e negam por padrão, então um agente que cobra e aceitasse
+mensagem de estranhos seria uma falha de custódia, não uma demonstração. Apontar
+a câmera abre a conversa, e o bot vai dizer que precisa de aprovação do
+operador. Peça, que a gente vincula o seu id.
+
+O que não depende de autorização de ninguém é a chain. A assinatura de mainnet
+em [Validação no mundo real](./evidence/validation.md) abre em qualquer
+explorador de blocos público, e é o único tipo de prova que este produto
+aceitaria vindo de outra pessoa.
 
 <div className="fp-figure">
 

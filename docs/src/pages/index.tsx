@@ -196,8 +196,14 @@ export default function Home(): React.ReactElement {
 
       <section className={styles.bots}>
         <div className={styles.botsInner}>
-          <span className={styles.eyebrow}>Try it yourself</span>
-          <h2 className={styles.sectionTitle}>Both bots are live right now.</h2>
+          <span className={styles.eyebrow}>The two agents</span>
+          <h2 className={styles.sectionTitle}>Live 24/7, and bound to their operator.</h2>
+          <p className={styles.lead}>
+            Both refuse anyone the operator has not bound, deliberately: a billing agent that
+            took messages from strangers would be a custody failure rather than a demonstration.
+            What needs nobody's permission is the chain, and the mainnet signature is in{' '}
+            <Link to="/docs/evidence/validation">Real-world validation</Link>.
+          </p>
           <div className={styles.qrGrid}>
             {BOTS.map((bot) => (
               <Bot key={bot.handle} bot={bot} />

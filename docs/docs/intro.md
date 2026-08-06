@@ -61,9 +61,19 @@ and trust level:
   was tested with a real prompt-injection attack (see
   [Security & Custody](/docs/how-it-works/security)).
 
-### Try it yourself, scan to open a bot
+### The two bots, and who they talk to
 
-Both are live right now, not a mockup.
+Both are live right now, not a mockup. **They also refuse anyone the operator
+has not bound**, which is deliberate rather than a limitation: peer groups in
+ZeroClaw are mutual opt-in and deny by default, so a billing agent that accepted
+messages from strangers would be a custody failure rather than a demonstration.
+Scanning a code opens the chat, and the bot will say it needs operator approval.
+Ask and we will bind your id.
+
+What needs no permission from anyone is the chain. The mainnet signature in
+[Real-world validation](/docs/evidence/validation) opens in any public block
+explorer, and that is the only kind of proof this product would accept from
+someone else.
 
 <div className="fp-figure">
 
