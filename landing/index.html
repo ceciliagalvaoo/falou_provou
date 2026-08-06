@@ -8,103 +8,211 @@
 <meta property="og:title" content="Falou e Provou — Anyone can claim. The chain proves.">
 <meta property="og:description" content="A billing agent that only marks something PROVEN when the source itself confirms it — a Solana signature, or a real bank statement read.">
 <meta property="og:type" content="website">
+<meta name="theme-color" content="#f4f0e5">
 <link rel="icon" type="image/svg+xml" href="assets/mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css">
+<script>
+  /* Content that rises in is only hidden if there is script to bring it back.
+     Without this the page is blank to anyone with JavaScript off, and to
+     anything that reads it without running scripts. */
+  document.documentElement.classList.add('js');
+</script>
 </head>
 <body>
 
 <header>
-  <div class="wrap">
+  <div class="shell">
     <a class="brand" href="#top">
       <img src="assets/mark.svg" alt="">
-      <span class="lockup sm"><span class="falou">falou</span><span class="provou">PROVOU</span></span>
+      <span class="lockup sm"><span class="falou">falou</span><span class="provou">PROVOU<svg class="seal" viewBox="0 0 240 16" fill="none" preserveAspectRatio="none" aria-hidden="true"><g stroke="currentColor" stroke-linecap="round" fill="none"><path d="M6 9C46 3 96 13 146 7S212 4 234 10" stroke-width="3.4" stroke-opacity="0.85"/><path d="M8 13C50 8 100 16 150 11S214 9 232 14" stroke-width="1.8" stroke-opacity="0.45"/></g></svg></span></span>
     </a>
     <nav class="links">
+      <a href="#rule">The rule</a>
       <a href="#how">How it works</a>
-      <a href="#states">The rule</a>
+      <a href="#proof">The proof</a>
       <a href="#custody">Custody</a>
       <a href="https://ceciliagalvaoo.github.io/falou_provou/">Docs</a>
       <a href="https://github.com/ceciliagalvaoo/falou_provou">GitHub</a>
     </nav>
-    <div class="header-cta">
-      <a class="btn btn-primary" href="https://t.me/falouprovou_bot" target="_blank" rel="noopener">Message the bot</a>
-    </div>
+    <a class="btn btn-primary" href="https://t.me/falouprovou_bot" target="_blank" rel="noopener">Message the bot</a>
   </div>
 </header>
 
 <main id="top">
 
+  <!-- ================= hero ================= -->
   <section class="hero">
-    <div class="wrap">
+    <!-- Big sweeping arc, top right. Decorative, and deliberately bled off
+         the corner so it reads as a stroke that carried on past the page. -->
+    <svg class="stroke stroke-a ink-draw" viewBox="0 0 300 300" fill="none" aria-hidden="true">
+      <defs>
+        <filter id="ink-a" x="-15%" y="-40%" width="130%" height="180%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.026" numOctaves="3" seed="21" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.4" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+      <g filter="url(#ink-a)" stroke="currentColor" stroke-linecap="round" fill="none">
+        <path d="M288 10C188 22 88 92 28 242" stroke-width="8" stroke-opacity="0.85" pathLength="1"/>
+        <path d="M296 22C198 34 98 102 40 254" stroke-width="4.5" stroke-opacity="0.5" pathLength="1"/>
+        <path d="M280 4C182 14 80 84 18 232" stroke-width="2.4" stroke-opacity="0.32" pathLength="1"/>
+      </g>
+    </svg>
+
+    <svg class="stroke stroke-b ink-draw" viewBox="0 0 500 90" fill="none" aria-hidden="true">
+      <defs>
+        <filter id="ink-b" x="-15%" y="-40%" width="130%" height="180%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.026" numOctaves="3" seed="42" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.4" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+      <g filter="url(#ink-b)" stroke="currentColor" stroke-linecap="round" fill="none">
+        <path d="M6 40C80 8 150 66 230 42C310 18 380 74 494 40" stroke-width="7" stroke-opacity="0.85" pathLength="1"/>
+        <path d="M6 54C82 24 152 80 232 56C312 32 382 86 494 54" stroke-width="4" stroke-opacity="0.5" pathLength="1"/>
+        <path d="M8 28C84 0 154 56 234 32C314 8 384 62 492 28" stroke-width="2.2" stroke-opacity="0.32" pathLength="1"/>
+      </g>
+    </svg>
+
+    <div class="shell">
       <span class="badge"><span class="dot"></span> Live on Solana mainnet-beta · running 24/7</span>
 
       <div class="hero-grid">
         <div>
-          <span class="lockup lg"><span class="falou">falou</span><span class="provou">PROVOU</span></span>
-          <p class="lede" style="margin-top:24px; font-family: var(--font-display); font-weight:600; font-size:1.4rem; color: var(--sand);">
+          <h1 class="lockup lg">
+            <span class="falou">falou</span>
+            <span class="provou">PROVOU<!--
+              The enclosure: a stamp drawn by hand, twice round, in the same
+              ink as the mark. Stretched to the word rather than fitted, which
+              is what keeps it looking drawn instead of placed.
+           --><svg class="seal ink-draw" viewBox="0 0 400 120" fill="none" preserveAspectRatio="none" aria-hidden="true">
+                <g stroke="currentColor" stroke-linecap="round" fill="none">
+                  <path d="M26 60C20 24 128 8 208 10C300 12 380 24 374 60C368 98 262 114 190 112C104 110 32 96 26 60" stroke-width="5" stroke-opacity="0.85" pathLength="1"/>
+                  <path d="M32 68C28 32 134 16 212 18C302 20 382 30 376 66C370 102 266 120 194 118C110 116 38 104 32 68" stroke-width="2.6" stroke-opacity="0.45" pathLength="1"/>
+                </g>
+              </svg></span>
+          </h1>
+
+          <p class="claim">
             Anyone can claim. The chain proves.
+            <svg class="underline ink-draw" viewBox="0 0 240 36" fill="none" aria-hidden="true">
+              <defs>
+                <filter id="ink-u" x="-15%" y="-40%" width="130%" height="180%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.026" numOctaves="3" seed="14" result="noise"/>
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.4" xChannelSelector="R" yChannelSelector="G"/>
+                </filter>
+              </defs>
+              <g filter="url(#ink-u)" stroke="currentColor" stroke-linecap="round" fill="none">
+                <path d="M5 21C40 9 90 28 140 16S210 8 235 18" stroke-width="9" stroke-opacity="0.85" pathLength="1"/>
+                <path d="M7 27C44 16 94 33 144 22S212 14 233 24" stroke-width="4.5" stroke-opacity="0.5" pathLength="1"/>
+              </g>
+            </svg>
           </p>
+
           <p class="lede">
             The books for freelancers and small businesses billing across borders — in USDC on Solana and Pix in
             Brazilian reais. Nothing is ever marked paid until the source itself confirms it: a signature read
             straight off the chain, or a transaction read straight off the real bank statement.
           </p>
+
           <div class="ctas">
-            <a class="btn btn-primary" href="https://t.me/falouprovou_bot" target="_blank" rel="noopener">Message the owner bot →</a>
-            <a class="btn btn-secondary" href="https://ceciliagalvaoo.github.io/falou_provou/" target="_blank" rel="noopener">Read the docs</a>
+            <a class="btn btn-primary btn-lg" href="https://t.me/falouprovou_bot" target="_blank" rel="noopener">Message the owner bot →</a>
+            <a class="btn btn-secondary btn-lg" href="https://ceciliagalvaoo.github.io/falou_provou/" target="_blank" rel="noopener">Read the docs</a>
           </div>
-          <p class="microcopy">Two live Telegram bots, not a mockup — one for billing, one a read-only dossier for the accountant.</p>
+
+          <p class="microcopy">
+            <span class="tally" aria-hidden="true">
+              <svg viewBox="0 0 28 24" fill="none"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M3 3C2 9 4 15 3 21" stroke-opacity="0.88"/><path d="M9 3C10 9 8 15 9.5 21" stroke-opacity="0.88"/></g></svg>
+            </span>
+            Two live Telegram bots, not a mockup — one for billing, one a read-only dossier for the accountant.
+          </p>
         </div>
 
-        <div class="demo-card">
-          <div class="demo-label">what every wait in the product looks like</div>
-          <div class="demo-bubble">"chegou um PIX de R$ 8.500, Empresa XYZ"</div>
+        <div class="card demo-card">
+          <span class="demo-label">What every wait in the product looks like</span>
+          <div class="demo-bubble">“chegou um PIX de R$ 8.500, Empresa XYZ”</div>
           <div class="demo-states">
-            <span class="demo-chip falou">FALOU</span>
-            <span class="demo-chip checking">checking the source…</span>
-            <span class="demo-chip provou">PROVOU</span>
+            <span class="chip falou">FALOU</span>
+            <span class="chip checking">checking the source…</span>
+            <span class="chip provou">PROVOU</span>
           </div>
-          <div class="demo-sig mono">231e1610-83b8… · R$ 8.500,00 · matched on the real statement</div>
+          <p class="demo-sig mono">231e1610-83b8… · R$ 8.500,00 · matched on the real statement</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="scan">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Try it yourself</span>
-        <h2>Scan to open it on your own phone.</h2>
-        <p class="lede">Real bots, live right now — not a mockup screenshot. Send a message and watch a real claim get checked against the real source.</p>
+  <!-- ================= the rule ================= -->
+  <section id="rule" class="well">
+    <div class="shell">
+      <div class="section-head rise">
+        <span class="eyebrow">The golden rule</span>
+        <h2>Three states. No fourth way to prove anything.</h2>
+        <p class="lede">Every entry in the ledger, on either rail, is exactly one of these — and only a direct query to the real source can move it to the middle one.</p>
       </div>
-      <div class="qr-grid">
-        <div class="qr-card">
-          <img src="assets/qr-dono.svg" alt="QR code linking to the owner bot on Telegram, @falouprovou_bot" width="220" height="220">
-          <div class="qr-label">
-            <span class="qr-role">Owner — billing, subscriptions, Pix</span>
-            <a class="qr-handle mono" href="https://t.me/falouprovou_bot" target="_blank" rel="noopener">@falouprovou_bot</a>
-          </div>
+      <div class="states-grid">
+        <div class="card state-card rise">
+          <span class="state-tag falou">FALOU</span>
+          <h3>Claimed</h3>
+          <p>Someone alleged it — a screenshot, a forwarded message, or the owner typing it in by hand. Registered, but weightless on its own.</p>
         </div>
-        <div class="qr-card">
-          <img src="assets/qr-contador.svg" alt="QR code linking to the accountant bot on Telegram, @falouprovou_contador_bot" width="220" height="220">
-          <div class="qr-label">
-            <span class="qr-role">Accountant — read-only dossier</span>
-            <a class="qr-handle mono" href="https://t.me/falouprovou_contador_bot" target="_blank" rel="noopener">@falouprovou_contador_bot</a>
-          </div>
+        <div class="card state-card rise">
+          <span class="state-tag provou">PROVOU</span>
+          <h3>Proven</h3>
+          <p>A confirmed signature read directly off Solana, or a transaction read directly off the real bank statement via Open Finance. The only state nobody can fake.</p>
+        </div>
+        <div class="card state-card rise">
+          <span class="state-tag nao">NÃO PROVOU</span>
+          <h3>Unproven</h3>
+          <p>Claimed, and the source was actually checked and did not confirm it — a stronger, more specific claim than “we couldn't check.”</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="proof">
-    <div class="wrap">
-      <div class="section-head">
+  <!-- ================= how it works ================= -->
+  <section id="how">
+    <div class="shell">
+      <div class="section-head rise">
+        <span class="eyebrow">How it works</span>
+        <h2>Four steps, every time, no exceptions.</h2>
+        <p class="lede">The same four steps run whether the money arrived over Solana or over Pix. There is no fast path, and no step a model can talk its way past.</p>
+      </div>
+      <div class="steps">
+        <div class="step rise">
+          <span class="num"></span>
+          <h3>Bill a client</h3>
+          <p>A Solana Pay link for a one-time invoice, an on-chain capped delegation for a recurring one, or a claimed Pix receipt.</p>
+        </div>
+        <div class="step rise">
+          <span class="num"></span>
+          <h3>It starts as FALOU</h3>
+          <p>Every claim is logged immediately — nothing is ever hidden, it just isn't trusted yet.</p>
+        </div>
+        <div class="step rise">
+          <span class="num"></span>
+          <h3>The source gets checked</h3>
+          <p>A deterministic script queries the chain or the real bank statement directly — never the model's own opinion.</p>
+        </div>
+        <div class="step rise">
+          <span class="num"></span>
+          <h3>Only a match is stamped</h3>
+          <p>PROVOU if it matches, NÃO PROVOU if the source was checked and it didn't. Nothing else moves the needle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= the proof ================= -->
+  <section id="proof" class="well">
+    <div class="shell">
+      <div class="section-head rise">
         <span class="eyebrow">Don't take our word for it</span>
         <h2>A real transaction, on real mainnet.</h2>
         <p class="lede">This isn't a testnet screenshot. Click through and verify it yourself on a public block explorer.</p>
       </div>
 
-      <div class="proof-card">
+      <div class="card proof-card rise">
         <div class="proof-row">
           <span class="k">Signature</span>
           <a class="v link" href="https://solscan.io/tx/3DSMW25MJ7eR7CkVwDwCMDZuum2MkyUGfHvBxxTq36BkrJnjJkBN1Ng5LtausUFjURzFH3LCpmENBmqkbRYNM58B" target="_blank" rel="noopener">3DSMW25M…kbrYNM58B ↗</a>
@@ -123,7 +231,7 @@
         </div>
       </div>
 
-      <p class="stat-line">
+      <p class="stat-line rise">
         <strong>61%</strong> of Brazilian small businesses still pay business expenses from a personal account
         (<a href="https://agenciasebrae.com.br/cultura-empreendedora/61-dos-empreendedores-brasileiros-fazem-pagamentos-da-empresa-com-a-conta-pessoal/" target="_blank" rel="noopener">Sebrae</a>).
         A fake payment receipt is a five-second Photoshop job. A forged signature on Solana is not.
@@ -131,88 +239,85 @@
     </div>
   </section>
 
-  <section id="states">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">The golden rule</span>
-        <h2>Three states. No fourth way to prove anything.</h2>
-        <p class="lede">Every entry in the ledger, on either rail, is exactly one of these — and only a direct query to the real source can move it to the middle one.</p>
+  <!-- ================= try it ================= -->
+  <section id="try">
+    <div class="shell">
+      <div class="section-head rise">
+        <span class="eyebrow">Try it yourself</span>
+        <h2>Scan to open it on your own phone.</h2>
+        <p class="lede">Real bots, live right now — not a mockup screenshot. Send a message and watch a real claim get checked against the real source.</p>
       </div>
-      <div class="states-grid">
-        <div class="state-card">
-          <span class="state-tag falou">FALOU</span>
-          <h3>Claimed</h3>
-          <p>Someone alleged it — a screenshot, a forwarded message, or the owner typing it in by hand. Registered, but weightless on its own.</p>
+      <div class="qr-grid">
+        <div class="card qr-card rise">
+          <img src="assets/qr-dono.svg" alt="QR code linking to the owner bot on Telegram, @falouprovou_bot" width="220" height="220">
+          <span class="qr-label">
+            <span class="qr-role">Owner — billing, subscriptions, Pix</span>
+            <a class="qr-handle" href="https://t.me/falouprovou_bot" target="_blank" rel="noopener">@falouprovou_bot</a>
+          </span>
         </div>
-        <div class="state-card">
-          <span class="state-tag provou">PROVOU</span>
-          <h3>Proven</h3>
-          <p>A confirmed signature read directly off Solana, or a transaction read directly off the real bank statement via Open Finance. The only state nobody can fake.</p>
-        </div>
-        <div class="state-card">
-          <span class="state-tag nao">NÃO PROVOU</span>
-          <h3>Unproven</h3>
-          <p>Claimed, and the source was actually checked and did not confirm it — a stronger, more specific claim than "we couldn't check."</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="how">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">How it works</span>
-        <h2>Four steps, every time, no exceptions.</h2>
-      </div>
-      <div class="steps">
-        <div class="step">
-          <div class="num"></div>
-          <h3>Bill a client</h3>
-          <p>A Solana Pay link for a one-time invoice, an on-chain capped delegation for a recurring one, or a claimed Pix receipt.</p>
-        </div>
-        <div class="step">
-          <div class="num"></div>
-          <h3>It starts as FALOU</h3>
-          <p>Every claim is logged immediately — nothing is ever hidden, it just isn't trusted yet.</p>
-        </div>
-        <div class="step">
-          <div class="num"></div>
-          <h3>The source gets checked</h3>
-          <p>A deterministic script queries the chain or the real bank statement directly — never the model's own opinion.</p>
-        </div>
-        <div class="step">
-          <div class="num"></div>
-          <h3>Only a match is stamped</h3>
-          <p>PROVOU if it matches, NÃO PROVOU if the source was checked and it didn't. Nothing else moves the needle.</p>
+        <div class="card qr-card rise">
+          <img src="assets/qr-contador.svg" alt="QR code linking to the accountant bot on Telegram, @falouprovou_contador_bot" width="220" height="220">
+          <span class="qr-label">
+            <span class="qr-role">Accountant — read-only dossier</span>
+            <a class="qr-handle" href="https://t.me/falouprovou_contador_bot" target="_blank" rel="noopener">@falouprovou_contador_bot</a>
+          </span>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="custody">
-    <div class="wrap">
-      <div class="section-head">
+  <!-- ================= custody ================= -->
+  <section id="custody" class="well">
+    <div class="shell">
+      <div class="section-head rise">
         <span class="eyebrow">Custody</span>
         <h2>The agent never holds an unbounded key.</h2>
-        <p class="lede">Three different custody patterns, chosen deliberately — none of them is "the agent can spend whatever it wants."</p>
+        <p class="lede">Three different custody patterns, chosen deliberately — none of them is “the agent can spend whatever it wants.”</p>
       </div>
       <ul class="custody-list">
-        <li><strong>The client always signs directly.</strong> For every one-time invoice and every subscription authorization, the only signature that moves or authorizes funds is the client's own wallet. The agent never touches that key.</li>
-        <li><strong>The agent's own key is capped by the Solana program itself.</strong> Recurring pulls use a dedicated key that can only call one instruction, within a per-period cap the client set on-chain — verified directly: an attempt to pull above the cap is rejected by the program, not by our code.</li>
-        <li><strong>Supplier payments need a human approval the agent cannot give itself.</strong> Tested directly with a real prompt-injection attack — the agent's own attempt to self-approve returns a genuine denial, not a no-op.</li>
+        <li class="rise">
+          <span class="tally" aria-hidden="true">
+            <svg viewBox="0 0 28 24" fill="none"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M3 3C2 9 4 15 3 21" stroke-opacity="0.88"/></g></svg>
+          </span>
+          <span>
+            <strong>The client always signs directly.</strong>
+            For every one-time invoice and every subscription authorization, the only signature that moves or authorizes funds is the client's own wallet. The agent never touches that key.
+          </span>
+        </li>
+        <li class="rise">
+          <span class="tally" aria-hidden="true">
+            <svg viewBox="0 0 28 24" fill="none"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M3 3C2 9 4 15 3 21" stroke-opacity="0.88"/><path d="M9 3C10 9 8 15 9.5 21" stroke-opacity="0.88"/></g></svg>
+          </span>
+          <span>
+            <strong>The agent's own key is capped by the Solana program itself.</strong>
+            Recurring pulls use a dedicated key that can only call one instruction, within a per-period cap the client set on-chain — verified directly: an attempt to pull above the cap is rejected by the program, not by our code.
+          </span>
+        </li>
+        <li class="rise">
+          <span class="tally" aria-hidden="true">
+            <svg viewBox="0 0 28 24" fill="none"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M3 3C2 9 4 15 3 21" stroke-opacity="0.88"/><path d="M9 3C10 9 8 15 9.5 21" stroke-opacity="0.88"/><path d="M15 3C14.5 9.5 15.6 14 14.6 20.6" stroke-opacity="0.88"/></g></svg>
+          </span>
+          <span>
+            <strong>Supplier payments need a human approval the agent cannot give itself.</strong>
+            Tested directly with a real prompt-injection attack — the agent's own attempt to self-approve returns a genuine denial, not a no-op.
+          </span>
+        </li>
       </ul>
-      <p style="margin-top: 28px;"><a class="btn-ghost" href="https://ceciliagalvaoo.github.io/falou_provou/security" target="_blank" rel="noopener">Read the full security write-up, including the incident that shaped this design →</a></p>
+      <p style="margin-top: 2.5rem">
+        <a class="btn-ghost" href="https://ceciliagalvaoo.github.io/falou_provou/docs/how-it-works/security" target="_blank" rel="noopener">Read the full security write-up, including the incident that shaped this design →</a>
+      </p>
     </div>
   </section>
 
-  <section>
-    <div class="wrap">
-      <div class="section-head">
+  <!-- ================= why Brazil ================= -->
+  <section id="scope">
+    <div class="shell">
+      <div class="section-head rise">
         <span class="eyebrow">Why Brazil first</span>
         <h2>The hardest version of the problem, not a limitation.</h2>
-        <p class="lede">Brazil pairs the world's largest instant-payment system by transaction count with a freshly regulated stablecoin-as-FX regime. Two of these four layers are Brazil-specific adapters — the core is universal.</p>
+        <p class="lede">Brazil pairs the world's largest instant-payment system by transaction count with a freshly regulated stablecoin-as-FX regime. Two of these three layers are Brazil-specific adapters — the core is universal.</p>
       </div>
-      <div class="table-wrap">
+      <div class="table-wrap rise">
         <table class="scope">
           <thead>
             <tr><th>Layer</th><th>Brazil today</th><th>Swap to expand</th></tr>
@@ -227,15 +332,28 @@
     </div>
   </section>
 
+  <!-- ================= final cta ================= -->
   <section>
-    <div class="wrap">
-      <div class="final-cta">
+    <div class="shell">
+      <div class="card final-cta rise">
+        <svg class="stroke stroke-c ink-draw" viewBox="0 0 400 40" fill="none" aria-hidden="true">
+          <defs>
+            <filter id="ink-c" x="-15%" y="-40%" width="130%" height="180%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.026" numOctaves="3" seed="7" result="noise"/>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.4" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+          </defs>
+          <g filter="url(#ink-c)" stroke="currentColor" stroke-linecap="round" fill="none">
+            <path d="M6 26C60 8 120 32 180 20S300 6 394 22" stroke-width="7" stroke-opacity="0.85" pathLength="1"/>
+            <path d="M8 31C64 15 126 37 186 25S304 12 392 27" stroke-width="4" stroke-opacity="0.5" pathLength="1"/>
+          </g>
+        </svg>
         <span class="eyebrow">For developers</span>
-        <h2 style="margin-top: 12px;">Run your own in one night.</h2>
-        <p class="lede" style="margin: 16px auto 0;">Same config, same SOPs, same verification discipline — a path-rewrite script handles the one hardcoded thing, you bring your own keys and credentials.</p>
+        <h2>Run your own in one night.</h2>
+        <p class="lede">Same config, same SOPs, same verification discipline — a path-rewrite script handles the one hardcoded thing, you bring your own keys and credentials.</p>
         <div class="ctas">
-          <a class="btn btn-primary" href="https://github.com/ceciliagalvaoo/falou_provou/blob/master/zeroclaw-data/config.toml.example" target="_blank" rel="noopener">See the config template</a>
-          <a class="btn btn-secondary" href="https://ceciliagalvaoo.github.io/falou_provou/reproducibility" target="_blank" rel="noopener">Reproducibility guide</a>
+          <a class="btn btn-primary btn-lg" href="https://github.com/ceciliagalvaoo/falou_provou/blob/master/zeroclaw-data/config.toml.example" target="_blank" rel="noopener">See the config template</a>
+          <a class="btn btn-secondary btn-lg" href="https://ceciliagalvaoo.github.io/falou_provou/docs/using-it/reproducibility" target="_blank" rel="noopener">Reproducibility guide</a>
         </div>
       </div>
     </div>
@@ -244,10 +362,10 @@
 </main>
 
 <footer>
-  <div class="wrap">
+  <div class="shell">
     <div class="foot-brand">
-      <span class="lockup sm"><span class="falou">falou</span><span class="provou">PROVOU</span></span>
-      <p style="margin-top: 14px;">Built for the Superteam Brasil bounty "Build Solana-native plugins for Zeroclaw." Pix rail runs against Pluggy's sandbox by design; the Solana rail has moved real funds on mainnet-beta.</p>
+      <span class="lockup sm"><span class="falou">falou</span><span class="provou">PROVOU<svg class="seal" viewBox="0 0 240 16" fill="none" preserveAspectRatio="none" aria-hidden="true"><g stroke="currentColor" stroke-linecap="round" fill="none"><path d="M6 9C46 3 96 13 146 7S212 4 234 10" stroke-width="3.4" stroke-opacity="0.85"/><path d="M8 13C50 8 100 16 150 11S214 9 232 14" stroke-width="1.8" stroke-opacity="0.45"/></g></svg></span></span>
+      <p>Built for the Superteam Brasil bounty “Build Solana-native plugins for Zeroclaw.” Pix rail runs against Pluggy's sandbox by design; the Solana rail has moved real funds on mainnet-beta.</p>
     </div>
     <div class="foot-links">
       <a href="https://ceciliagalvaoo.github.io/falou_provou/" target="_blank" rel="noopener">Docs</a>
@@ -256,6 +374,32 @@
     </div>
   </div>
 </footer>
+
+<script>
+  /* Content rises in as it comes into view. If the browser cannot do
+     IntersectionObserver, or the reader asked for less motion, everything
+     is simply shown — the class that hides it is never applied blind. */
+  (function () {
+    var items = document.querySelectorAll('.rise');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduce || !('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.remove('rise'); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry, i) {
+        if (!entry.isIntersecting) return;
+        entry.target.style.animationDelay = (i * 0.07) + 's';
+        entry.target.classList.add('rise--in');
+        io.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+    items.forEach(function (el) { io.observe(el); });
+  })();
+</script>
 
 </body>
 </html>
