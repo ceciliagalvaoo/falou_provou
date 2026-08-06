@@ -1,7 +1,5 @@
 ---
-id: deployment
 title: Deployment
-sidebar_position: 7
 ---
 
 # Deployment
@@ -39,10 +37,10 @@ Fixed with a persistent relabel: `semanage fcontext -a -t bin_t <path>` followed
 
 ## Keeping the VM in sync with the repository
 
-The VM's checkout is kept up to date with `git pull` against the main branch. One real, repeatable wrinkle: a path-rewriting script (see [Reproducibility](/reproducibility)) permanently bakes the VM's own absolute install path into tracked config/SOP/skill files, since there's no runtime templating layer for these paths. Pulling a new commit that touches an already-rewritten file causes a local conflict. The established, repeatable fix: discard the local rewritten version (safe, since it's fully regeneratable), pull, then re-run the path-rewrite script.
+The VM's checkout is kept up to date with `git pull` against the main branch. One real, repeatable wrinkle: a path-rewriting script (see [Reproducibility](/docs/using-it/reproducibility)) permanently bakes the VM's own absolute install path into tracked config/SOP/skill files, since there's no runtime templating layer for these paths. Pulling a new commit that touches an already-rewritten file causes a local conflict. The established, repeatable fix: discard the local rewritten version (safe, since it's fully regeneratable), pull, then re-run the path-rewrite script.
 
 ## What's deliberately not done yet
 
-- The Pix rail's Pluggy bank connection runs in sandbox mode on the VM, same as local development — a deliberate, disclosed choice (see [Security](/security#pix-rail--a-declared-third-party-trust-dependency)), not a shortcut taken under time pressure.
-- The automatic recurring-pull cron job ships disabled by default on this deployment (see [Known limitations](/limitations)) — the mechanism itself is fully proven, but running it unattended continuously against shared test infrastructure isn't turned on without a specific reason.
-- The Actions server's mainnet configuration (it supports mainnet via environment variables, and the mainnet mechanism itself is proven — see [Real-world validation](/validation)) is not what's live on the always-on deployment today, which runs devnet-configured.
+- The Pix rail's Pluggy bank connection runs in sandbox mode on the VM, same as local development — a deliberate, disclosed choice (see [Security](/docs/how-it-works/security#pix-rail--a-declared-third-party-trust-dependency)), not a shortcut taken under time pressure.
+- The automatic recurring-pull cron job ships disabled by default on this deployment (see [Known limitations](/docs/evidence/bugs-found)) — the mechanism itself is fully proven, but running it unattended continuously against shared test infrastructure isn't turned on without a specific reason.
+- The Actions server's mainnet configuration (it supports mainnet via environment variables, and the mainnet mechanism itself is proven — see [Real-world validation](/docs/evidence/validation)) is not what's live on the always-on deployment today, which runs devnet-configured.

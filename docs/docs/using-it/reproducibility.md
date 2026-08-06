@@ -1,7 +1,5 @@
 ---
-id: reproducibility
 title: Reproducibility
-sidebar_position: 8
 ---
 
 # Reproducibility
@@ -41,4 +39,4 @@ This was verified against an isolated fixture (not the live project, to avoid br
 6. (Optional, for the Pix rail) Provide your own Pluggy sandbox `CLIENT_ID`/`CLIENT_SECRET` in `pix-rail/.env`.
 7. Start the daemon (`zeroclaw daemon`) and the Actions server (`node tooling/actions-server/server.mjs`).
 
-This mirrors exactly the steps this project's own deployment onto a fresh Oracle Cloud VM followed — see [Deployment](/deployment) for what that looked like in practice, including a real SELinux fix that isn't part of this script (it's an OS-level concern, not a project-file path issue).
+This mirrors exactly the steps this project's own deployment onto a fresh Oracle Cloud VM followed — see [Deployment](/docs/using-it/deployment) for what that looked like in practice, including a real SELinux fix that isn't part of this script (it's an OS-level concern, not a project-file path issue).

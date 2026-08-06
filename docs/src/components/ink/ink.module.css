@@ -1,0 +1,114 @@
+/**
+ * Motion for the ink components. Every stroke is drawn rather than faded in:
+ * the mark, the brush strokes and the counted tallies all use the same
+ * dash-offset draw, so the whole system looks like one hand.
+ */
+
+.draw path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 1.3s cubic-bezier(0.22, 0.72, 0.2, 1) forwards;
+}
+
+.draw path:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.draw path:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.draw path:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.draw path:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.stroke {
+  pointer-events: none;
+  user-select: none;
+  color: var(--fp-turquoise-bright, #14a8a0);
+}
+
+/* ---------- the falou / PROVOU lockup ---------- */
+
+.lockup {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* The enclosure is drawn outside the word's box, so it needs room above. */
+  gap: 0.3em;
+  line-height: 1;
+  margin: 0;
+}
+
+.falou {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--fp-ink-soft);
+  letter-spacing: 0.005em;
+  font-size: clamp(1.75rem, 5vw, 3rem);
+}
+
+/* PROVOU is not a filled box. Nothing in this system is filled — emphasis is
+   made with a drawn mark, the way somebody circles the line that matters. */
+.provou {
+  position: relative;
+  font-family: var(--ifm-font-family-monospace);
+  font-weight: 500;
+  color: var(--ifm-color-primary);
+  letter-spacing: 0.04em;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+}
+
+/* Centred on the word rather than inset from its box: a line box is taller
+   than the capitals inside it, so an even inset would hang the enclosure well
+   above the letters it is supposed to be circling. */
+.seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -44%;
+  width: calc(100% + 1.6em);
+  height: 1.8em;
+  color: var(--fp-turquoise-bright, #14a8a0);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+[data-theme='dark'] .seal {
+  color: var(--ifm-color-primary);
+  opacity: 0.6;
+}
+
+/* ---------- counted marks ---------- */
+
+.tally {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 0.35rem;
+  height: 18px;
+  color: var(--ifm-color-primary);
+  flex: none;
+}
+
+.tally svg {
+  height: 100%;
+  width: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .draw path {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}

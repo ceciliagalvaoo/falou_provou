@@ -1,7 +1,5 @@
 ---
-id: validation
 title: Real-world Validation
-sidebar_position: 5
 ---
 
 # Real-world validation
@@ -69,10 +67,10 @@ Mainnet testing above proves the mechanism works with real money; devnet testing
 
 ## Prompt-injection and attack testing
 
-Full write-up in [Security](/security). In summary: fake payment receipts, off-the-books confirmation claims, checkpoint self-approval attempts, and direct key-exfiltration social engineering were all tested against the live agent. One real, serious finding (key exfiltration) was found and fixed structurally; every other attempt either failed outright or exposed a smaller, honestly-disclosed gap.
+Full write-up in [Security](/docs/how-it-works/security). In summary: fake payment receipts, off-the-books confirmation claims, checkpoint self-approval attempts, and direct key-exfiltration social engineering were all tested against the live agent. One real, serious finding (key exfiltration) was found and fixed structurally; every other attempt either failed outright or exposed a smaller, honestly-disclosed gap.
 
 ## What real-world testing does not cover
 
-- Public hosting of the Actions/Blinks server on mainnet configuration specifically (the server supports it via environment variables, and the mechanism was proven working against mainnet — but the always-on production deployment currently runs devnet-configured; see [Deployment](/deployment)).
+- Public hosting of the Actions/Blinks server on mainnet configuration specifically (the server supports it via environment variables, and the mechanism was proven working against mainnet — but the always-on production deployment currently runs devnet-configured; see [Deployment](/docs/using-it/deployment)).
 - The Solana-Pay-URI-native wallet flow (QR scan) on mainnet specifically — the mainnet invoice test above went through a manual-transfer fallback, documented honestly rather than hidden, because the available wallet setup didn't support opening a `solana:` URI directly in that environment.
 - A full conversational run of the supplier-payment checkpoint gate specifically against mainnet (the gate mechanism itself was proven network-agnostic on devnet, and the mainnet payment itself was proven separately, but not run through the full conversational SOP checkpoint on mainnet in the same session).

@@ -1,7 +1,5 @@
 ---
-id: limitations
 title: Bugs Found & Fixed
-sidebar_position: 6
 ---
 
 # Bugs found — and how we fixed them
@@ -26,7 +24,7 @@ A short, separate list of what's genuinely still open — and honestly, why it c
 
 | Bug found | How it was fixed |
 |---|---|
-| A smaller model (`claude-haiku-4-5`), swapped in to chase an unrelated bug, fabricated a complete, plausible-looking **PROVOU** record with a fake signature — zero real tool calls, the invoice was never even created. Caught only by querying the chain directly and finding the signature didn't exist. | Reverted to `claude-sonnet-4-5` immediately, treated as non-negotiable. Restructured `invoice-watch` from 2 steps to 3: an independent re-verification step re-derives proof from a fresh chain query, and only *that* step's own verdict — never the first step's report — can result in PROVOU. Full incident in [Security](/security#the-single-most-important-finding-of-this-project-a-model-swap-that-broke-the-golden-rule). |
+| A smaller model (`claude-haiku-4-5`), swapped in to chase an unrelated bug, fabricated a complete, plausible-looking **PROVOU** record with a fake signature — zero real tool calls, the invoice was never even created. Caught only by querying the chain directly and finding the signature didn't exist. | Reverted to `claude-sonnet-4-5` immediately, treated as non-negotiable. Restructured `invoice-watch` from 2 steps to 3: an independent re-verification step re-derives proof from a fresh chain query, and only *that* step's own verdict — never the first step's report — can result in PROVOU. Full incident in [Security](/docs/how-it-works/security#the-single-most-important-finding-of-this-project-a-model-swap-that-broke-the-golden-rule). |
 | A real `transfer_recurring` pull landed on-chain for real, but the step that should have recorded it failed outright (Anthropic API credit exhaustion mid-session) — money moved, the ledger stayed completely silent. | Built a reconciliation job that lists every pull the agent-puller key has genuinely signed, read directly from the chain, and backfills any signature with no matching memory record. On its first real run it found and correctly backfilled two previously-unrecorded pulls. |
 | `contador` reported **zero** Solana PROVOU entries when asked to consolidate "this week" — ground truth showed real entries existed; its only read path (`memory_recall`, a keyword search) isn't guaranteed to surface every row once the memory table passed 50+ entries. | Built a zero-LLM-cost cron job that does a full, deterministic table scan and writes the real totals directly into `contador`'s own memory — answering no longer depends on a search finding everything on its own. |
 | That fix's first version stored the totals in a second memory key — a live re-test then showed the search sometimes surfaced the *instructions* entry instead, because it happened to contain the snapshot key's name as text and scored higher for the same query. | Merged both into one memory entry. Whichever way the entry gets surfaced, the live numbers are already inside it — no second lookup that can fail. |

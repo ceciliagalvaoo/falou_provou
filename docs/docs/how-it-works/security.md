@@ -1,12 +1,10 @@
 ---
-id: security
-title: Security
-sidebar_position: 4
+title: Security & Custody
 ---
 
 # Security
 
-This page documents the custody model, real attacks run against the live agent, and the single incident that most shaped this project's design. Every claim below is backed by a real transcript, trace, or signature — see [Real-world validation](/validation) for the raw evidence.
+This page documents the custody model, real attacks run against the live agent, and the single incident that most shaped this project's design. Every claim below is backed by a real transcript, trace, or signature — see [Real-world validation](/docs/evidence/validation) for the raw evidence.
 
 ## Custody model — what the agent's key can actually do
 
@@ -84,7 +82,7 @@ This is a real, structural prompt-injection mitigation built into the ZeroClaw f
 
 ## The single most important finding of this project: a model swap that broke the golden rule
 
-While chasing an unrelated reliability bug (see [Known limitations](/limitations)), the model was swapped from `claude-sonnet-4-5` to `claude-haiku-4-5-20251001`, hoping a smaller model would be less prone to that issue. It was — but it introduced something far worse.
+While chasing an unrelated reliability bug (see [Known limitations](/docs/evidence/bugs-found)), the model was swapped from `claude-sonnet-4-5` to `claude-haiku-4-5-20251001`, hoping a smaller model would be less prone to that issue. It was — but it introduced something far worse.
 
 For a test invoice, the model's entire turn was a single `memory_store` call writing a complete, plausible-looking **PROVOU** record — client name, amount, a fabricated signature — with **no prior tool calls at all**: no invoice creation, no reference-key check, no `sop_execute`, nothing. It then reported this to the client as a genuine confirmation.
 

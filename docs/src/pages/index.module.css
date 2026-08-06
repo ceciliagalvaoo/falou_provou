@@ -1,0 +1,388 @@
+/* ---------- hero ---------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 3.5rem 1.5rem 4rem;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding: 5rem 1.5rem 6rem;
+  }
+}
+
+.strokeTop {
+  position: absolute;
+  top: -7rem;
+  right: -7rem;
+  width: 360px;
+  opacity: 0.26;
+}
+
+.strokeBottom {
+  position: absolute;
+  bottom: -1.5rem;
+  left: -6rem;
+  width: 620px;
+  opacity: 0.2;
+}
+
+@media (min-width: 768px) {
+  .strokeTop {
+    top: -10rem;
+    right: -10rem;
+    width: 560px;
+  }
+
+  .strokeBottom {
+    left: -4rem;
+    width: 880px;
+  }
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3rem;
+}
+
+.heroText {
+  flex: 1 1 24rem;
+  min-width: 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.75rem;
+  color: var(--ifm-color-primary);
+  border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 28%, transparent);
+  padding: 0.35rem 0.75rem;
+  border-radius: 100px;
+  margin-bottom: 2rem;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.7);
+  }
+}
+
+.claim {
+  margin: 1.75rem 0 0;
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 4.2vw, 2.25rem);
+  line-height: 1.15;
+  color: var(--ifm-heading-color);
+}
+
+.lead {
+  margin: 1.5rem 0 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--fp-ink-soft);
+  max-width: 40em;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 2.5rem 0 1.5rem;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.95rem 1.6rem;
+  border-radius: var(--ifm-global-radius);
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background-color 0.18s, border-color 0.18s, color 0.18s;
+}
+
+.primary {
+  background: var(--ifm-color-primary);
+  color: var(--ifm-background-color);
+}
+
+.primary:hover {
+  background: var(--ifm-heading-color);
+  color: var(--ifm-background-color);
+  text-decoration: none;
+}
+
+.secondary {
+  border-color: color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+  color: var(--ifm-color-primary);
+}
+
+.secondary:hover {
+  border-color: var(--ifm-color-primary);
+  background: color-mix(in srgb, var(--ifm-color-primary) 7%, transparent);
+  text-decoration: none;
+}
+
+.byline {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--fp-ink-soft);
+}
+
+.heroMark {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 0 auto;
+  color: var(--ifm-color-primary);
+}
+
+.markCaption {
+  margin: 0;
+  max-width: 16rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--fp-ink-soft);
+}
+
+/* ---------- the three states band ---------- */
+
+.states {
+  border-block: 1px solid var(--fp-hairline);
+  background: color-mix(in srgb, var(--ifm-background-surface-color) 45%, transparent);
+  padding: 3.5rem 1.5rem;
+}
+
+.statesInner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--ifm-font-family-base);
+  font-weight: 500;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.sectionTitle {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+  line-height: 1.1;
+  margin: 0 0 2.5rem;
+  text-wrap: balance;
+}
+
+.stateGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 700px) {
+  .stateGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.stateCard {
+  padding: 1.75rem;
+  border: 1px solid var(--fp-hairline);
+  border-radius: var(--ifm-global-radius);
+  background: var(--ifm-background-color);
+}
+
+.stateName {
+  display: inline-block;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.3rem 0.65rem;
+  border-radius: 3px;
+  margin-bottom: 1.25rem;
+}
+
+.falouTag {
+  color: var(--fp-ink-soft);
+  border: 1px solid var(--fp-hairline);
+}
+
+/* One shape, three inks — no filled tag, because the state is read from the
+   word and its colour rather than from one of the three shouting. */
+.provouTag {
+  color: var(--ifm-color-primary);
+  border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+  background: color-mix(in srgb, var(--ifm-color-primary) 9%, transparent);
+}
+
+.naoTag {
+  color: var(--fp-vermilion);
+  border: 1px solid color-mix(in srgb, var(--fp-vermilion) 40%, transparent);
+}
+
+[data-theme='dark'] .naoTag {
+  color: #f08a6f;
+  border-color: rgba(240, 138, 111, 0.45);
+}
+
+.stateBody {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--fp-ink-soft);
+}
+
+/* ---------- the route cards ---------- */
+
+.main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  display: block;
+  min-width: 0;
+  padding: 1.75rem;
+  border-radius: var(--ifm-global-radius);
+  border: 1px solid var(--fp-hairline);
+  background: color-mix(in srgb, var(--ifm-background-surface-color) 45%, transparent);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.18s, transform 0.18s;
+}
+
+.card:hover {
+  text-decoration: none;
+  color: inherit;
+  border-color: color-mix(in srgb, var(--ifm-color-primary) 45%, transparent);
+  transform: translateY(-2px);
+}
+
+.cardEyebrow {
+  display: block;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+
+.cardTitle {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  margin: 0 0 0.6rem;
+}
+
+.cardBody {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--fp-ink-soft);
+}
+
+/* ---------- try the bots ---------- */
+
+.bots {
+  border-top: 1px solid var(--fp-hairline);
+  padding: 4rem 1.5rem;
+}
+
+.botsInner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.qrGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  max-width: 22rem;
+}
+
+@media (min-width: 640px) {
+  .qrGrid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: none;
+  }
+}
+
+.qrCard {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  border: 1px solid var(--fp-hairline);
+  border-radius: var(--ifm-global-radius);
+  background: color-mix(in srgb, var(--ifm-background-surface-color) 45%, transparent);
+}
+
+.qrCard img {
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+  border-radius: 3px;
+  border: 1px solid var(--fp-hairline);
+}
+
+.qrLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.qrRole {
+  font-size: 0.8125rem;
+  color: var(--fp-ink-soft);
+}
+
+.qrHandle {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.9375rem;
+  overflow-wrap: anywhere;
+}

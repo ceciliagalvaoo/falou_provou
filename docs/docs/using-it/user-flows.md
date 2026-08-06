@@ -1,7 +1,5 @@
 ---
-id: user-flows
 title: User Flows
-sidebar_position: 3
 ---
 
 # User flows
@@ -18,7 +16,7 @@ The product is two Telegram bots. This page walks through what a real person typ
 4. When a real payment lands, the SOP does **two independent reads** before writing anything: an initial check, then a second, separate script that re-verifies the signature from scratch. Only after both agree does the state flip to **PROVOU**.
 5. If nothing arrives within the timeout, the state is written as **NÃO PROVOU** — never left ambiguous.
 
-**What this proves**: no screenshot, PDF, or "I already paid, trust me" message ever moves this state — tested directly against real social-engineering attempts (see [Security](/security)).
+**What this proves**: no screenshot, PDF, or "I already paid, trust me" message ever moves this state — tested directly against real social-engineering attempts (see [Security](/docs/how-it-works/security)).
 
 ## Flow 2 — Recurring subscription (Layer 1)
 
@@ -38,7 +36,7 @@ The product is two Telegram bots. This page walks through what a real person typ
 
 **Checking status**: the owner can ask *"which subscriptions are active?"* at any time — this uses the `subscription-visibility` skill, a read-only query against the chain, not a memory guess.
 
-**Note on this demo's automatic pulling**: in the current deployment, the automatic recurring-pull cron job is intentionally left disabled by default (documented in [Known limitations](/limitations)) — triggering it for a live demo currently requires a technical operator to run it manually. The authorization step and the pull mechanism itself are both fully proven independently (see [Real-world validation](/validation)).
+**Note on this demo's automatic pulling**: in the current deployment, the automatic recurring-pull cron job is intentionally left disabled by default (documented in [Known limitations](/docs/evidence/bugs-found)) — triggering it for a live demo currently requires a technical operator to run it manually. The authorization step and the pull mechanism itself are both fully proven independently (see [Real-world validation](/docs/evidence/validation)).
 
 ## Flow 3 — Supplier payment (Layer 1, Step 4)
 
@@ -46,7 +44,7 @@ The product is two Telegram bots. This page walks through what a real person typ
 
 1. Owner: *"pay 2 USDC to fornecedor-teste"*
 2. The `supplier-payment` SOP resolves the supplier name against a fixed allowlist file via a deterministic script — never the agent's own judgment. An unknown supplier is rejected immediately, before any transaction is even built.
-3. For a known supplier, the SOP **parks and waits for approval that must happen outside the chat** — a separate CLI command or admin HTTP call, which the agent itself is structurally unable to trigger (tested directly, see [Security](/security)).
+3. For a known supplier, the SOP **parks and waits for approval that must happen outside the chat** — a separate CLI command or admin HTTP call, which the agent itself is structurally unable to trigger (tested directly, see [Security](/docs/how-it-works/security)).
 4. Once approved externally, the SOP generates and shares the payment Blink. The owner (or whoever holds the paying wallet) opens it and signs.
 5. Because sharing a link is not proof a payment actually happened, this SOP only ever records **FALOU**, never PROVOU — it does not claim more certainty than it actually has.
 
@@ -61,7 +59,7 @@ The product is two Telegram bots. This page walks through what a real person typ
 3. The `pix-watch` SOP queries the real bank statement via Pluggy (Open Finance), looking for a real transaction matching the claimed amount within a time window around the claimed date.
 4. If a matching transaction is found in the actual statement, the state flips to **PROVOU**. If the statement was genuinely checked and nothing matched, it's recorded as **NÃO PROVOU**. If the check itself failed (e.g., a connectivity error), the claim stays FALOU with an explicit note that verification could not complete — it is never rounded up to a denial it didn't actually receive.
 
-**What this proves in practice**: this exact flow was run live against the real sandbox bank statement, both for a claim that had no match (correctly NÃO PROVOU) and for the real known salary transaction (correctly PROVOU) — see [Real-world validation](/validation).
+**What this proves in practice**: this exact flow was run live against the real sandbox bank statement, both for a claim that had no match (correctly NÃO PROVOU) and for the real known salary transaction (correctly PROVOU) — see [Real-world validation](/docs/evidence/validation).
 
 ## Flow 5 — Accountant consolidation (`contador`)
 
@@ -69,7 +67,7 @@ The product is two Telegram bots. This page walks through what a real person typ
 
 1. Accountant: *"how much has been consolidated this week?"*
 2. `contador` reads both rails' ledger state (via a read-only memory lookup, never a live database query it could run itself) and reports three separate totals — PROVOU, FALOU, and NÃO PROVOU — converting Solana-rail USDC into BRL using a real, live PTAX exchange rate, and never blurring the three states together.
-3. `contador` has **no tool capable of moving funds** in its registry at all — not because it "chooses not to," but because `shell`, `memory_store`, and every `sop_*` tool are excluded from its configuration by construction. This was tested directly with a real prompt-injection attack impersonating a system administrator; the agent's trace shows zero tool-call attempts of any kind for that turn (see [Security](/security)).
+3. `contador` has **no tool capable of moving funds** in its registry at all — not because it "chooses not to," but because `shell`, `memory_store`, and every `sop_*` tool are excluded from its configuration by construction. This was tested directly with a real prompt-injection attack impersonating a system administrator; the agent's trace shows zero tool-call attempts of any kind for that turn (see [Security](/docs/how-it-works/security)).
 
 ## The golden rule, restated for all five flows
 
