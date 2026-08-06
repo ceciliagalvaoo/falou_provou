@@ -7,11 +7,32 @@ An operator-hosted [ZeroClaw](https://github.com/zeroclaw-labs/zeroclaw) agent
 that bills in two rails — **USDC on Solana** and **Pix in BRL** — and
 never records anything it did not verify at the source.
 
-**Full documentation (architecture, user flows, security, real-world
-validation, deployment, reproducibility):**
+**Full documentation (the rule, architecture, security, real-world validation,
+deployment, reproducibility):**
 **[ceciliagalvaoo.github.io/falou_provou](https://ceciliagalvaoo.github.io/falou_provou/)**
 
 **Landing page:** **[falou-provou.onrender.com](https://falou-provou.onrender.com)**
+
+## The idea
+
+Every ledger entry, on either rail, has exactly one of three states:
+
+| State | Meaning |
+|---|---|
+| **FALOU** | Someone claimed it happened — including the owner, entering it manually |
+| **PROVOU** | Confirmed directly against the source: a signature on Solana, or a transaction read from the real bank statement via Pluggy |
+| **NÃO PROVOU** | Claimed, and the source was checked and did not confirm it |
+
+No screenshot, forwarded message, or document ever moves an entry to
+PROVOU. Only a direct, independent read of the real source does. That
+rule is enforced in code (`SOP.md` steps, not just prose) throughout this
+project, and has been verified against the live, running system —
+including under active prompt-injection attacks.
+
+Everything in this repo has been run against **real Solana mainnet-beta
+transactions with real money**, not only devnet/sandbox — see
+[Real-world validation](https://ceciliagalvaoo.github.io/falou_provou/docs/evidence/validation)
+for the actual signatures.
 
 ## The product, live
 
@@ -39,25 +60,6 @@ local demo. Scan to open one on your own phone:
 - **[@falouprovou_contador_bot](https://t.me/falouprovou_contador_bot)** —
   `contador`, the accountant's read-only dossier agent.
 
-Everything in this repo has been run against **real Solana mainnet-beta
-transactions with real money**, not only devnet/sandbox — see
-[Real-world validation](https://ceciliagalvaoo.github.io/falou_provou/validation)
-for the actual signatures.
-
-Every ledger entry, on either rail, has exactly one of three states:
-
-| State | Meaning |
-|---|---|
-| **FALOU** | Someone claimed it happened — including the owner, entering it manually |
-| **PROVOU** | Confirmed directly against the source: a signature on Solana, or a transaction read from the real bank statement via Pluggy |
-| **NÃO PROVOU** | Claimed, and the source denied it or never confirmed it |
-
-No screenshot, forwarded message, or document ever moves an entry to
-PROVOU. Only a direct, independent read of the real source does. That
-rule is enforced in code (`SOP.md` steps, not just prose) throughout this
-project, and has been verified against the live, running system —
-including under active prompt-injection attacks.
-
 ## What's actually in here
 
 Two ZeroClaw agents, one install:
@@ -83,18 +85,6 @@ misread as "the agent holds a master key"): it does not. A single
 dedicated key can only ever call the delegated pull instruction within
 the cap and expiry each client authorized on-chain themselves; the
 Solana program enforces the cap, not application code.
-
-## Repo layout
-
-```
-zeroclaw-data/config.toml.example   config template (real config.toml is gitignored - has secrets)
-zeroclaw-data/shared/sops/          the FALOU->PROVOU/NÃO PROVOU verification procedures
-zeroclaw-data/shared/skills/        owner-facing capabilities (invoice, Pix note, etc.)
-zeroclaw-data/shared/maintenance/   zero-LLM-cost cron jobs (stale-run cleanup, ledger reconciliation)
-pix-rail/                 the Pluggy (Open Finance) integration + one-time bank-connection page
-tooling/actions-server/   the Solana Actions (Blinks) HTTP server for Layer 1
-tooling/subscriptions-test/  isolated devnet tests for the recurring-delegation program calls
-```
 
 ## Prerequisites
 
@@ -176,7 +166,7 @@ tooling/subscriptions-test/  isolated devnet tests for the recurring-delegation 
    It's `localhost`-only by default for a fresh local reproduction like this
    one — the live, publicly-hosted deployment runs the same server behind
    real HTTPS; see
-   [Deployment](https://ceciliagalvaoo.github.io/falou_provou/deployment)
+   [Deployment](https://ceciliagalvaoo.github.io/falou_provou/docs/using-it/deployment)
    for how.
 
 5. **Start the daemon.**
@@ -186,6 +176,53 @@ tooling/subscriptions-test/  isolated devnet tests for the recurring-delegation 
    Message your `dono` bot on Telegram. Message your `contador` bot
    separately to test the read-only dossier.
 
+## The front end
+
+There are three surfaces outside Telegram, and all three run one design
+system — **Tinta sobre Creme**: ink on cream, and the ink is turquoise.
+
+| Where | What |
+|---|---|
+| `landing/` | the public landing page — static HTML and CSS, no build step |
+| `docs/` | the Docusaurus documentation site |
+| `pix-rail/connect-page/`, `tooling/actions-server/*.html` | the operator pages: bank connection, and the mainnet Blink tests |
+
+Three rules generate almost all of it: one warm paper background and one
+turquoise ink, with no gradients, no dark surfaces and no filled blocks of
+colour outside a primary button; nothing decorative unless it is also true (the
+counted marks count real things, the three state chips are the three real
+states); and every mark is *drawn* rather than placed — strokes paint
+themselves in along their own path, and are allowed to be uneven.
+
+The palette, the type, the mark, the motion rules and the accessibility
+numbers are written down in
+[Design system](https://ceciliagalvaoo.github.io/falou_provou/docs/project/design-system).
+
+To work on the landing page:
+
+```
+cd landing && python3 -m http.server 8899
+```
+
+To work on the docs:
+
+```
+cd docs && npm install && npm start
+```
+
+## Documentation
+
+The docs site is organised around four questions, and nothing is documented in
+two places.
+
+| | |
+|---|---|
+| **What it is** | [Overview](https://ceciliagalvaoo.github.io/falou_provou/docs/intro) · [The problem](https://ceciliagalvaoo.github.io/falou_provou/docs/problem-and-solution) |
+| **How it works** | [The golden rule](https://ceciliagalvaoo.github.io/falou_provou/docs/how-it-works/the-golden-rule) · [Architecture](https://ceciliagalvaoo.github.io/falou_provou/docs/how-it-works/architecture) · [Security & custody](https://ceciliagalvaoo.github.io/falou_provou/docs/how-it-works/security) |
+| **Using it** | [User flows](https://ceciliagalvaoo.github.io/falou_provou/docs/using-it/user-flows) · [Deployment](https://ceciliagalvaoo.github.io/falou_provou/docs/using-it/deployment) · [Reproducibility](https://ceciliagalvaoo.github.io/falou_provou/docs/using-it/reproducibility) |
+| **Evidence** | [Real-world validation](https://ceciliagalvaoo.github.io/falou_provou/docs/evidence/validation) · [Bugs found & fixed](https://ceciliagalvaoo.github.io/falou_provou/docs/evidence/bugs-found) |
+| **Project** | [Design system](https://ceciliagalvaoo.github.io/falou_provou/docs/project/design-system) · [Team](https://ceciliagalvaoo.github.io/falou_provou/docs/project/team) |
+
 ## Bugs found & fixed, and what's still open (disclosed, not hidden)
 
 Dozens of real bugs were found during live testing against the running
@@ -193,9 +230,9 @@ system — most are already fixed and documented with their root cause,
 including the incident that shaped this project's design most (a model
 swap that once broke the golden rule). A handful of things are genuinely
 still open, each with a concrete reason it isn't closed yet. Full record:
-[Bugs found & fixed](https://ceciliagalvaoo.github.io/falou_provou/limitations)
-and [Security](https://ceciliagalvaoo.github.io/falou_provou/security) on
-the docs site. In short, locally:
+[Bugs found & fixed](https://ceciliagalvaoo.github.io/falou_provou/docs/evidence/bugs-found)
+and [Security & custody](https://ceciliagalvaoo.github.io/falou_provou/docs/how-it-works/security)
+on the docs site. In short, locally:
 
 - **`contador`'s Telegram channel needs its own bot token** (see Setup
   step 2) — without one it's still fully testable via
@@ -218,6 +255,20 @@ the docs site. In short, locally:
   against Pluggy's sandbox connector, by design — a real bank connection
   is optional and was never required for this to be a genuine, complete
   integration.
+
+## Where everything is
+
+```
+zeroclaw-data/config.toml.example   config template (real config.toml is gitignored - has secrets)
+zeroclaw-data/shared/sops/          the FALOU->PROVOU/NÃO PROVOU verification procedures
+zeroclaw-data/shared/skills/        owner-facing capabilities (invoice, Pix note, etc.)
+zeroclaw-data/shared/maintenance/   zero-LLM-cost cron jobs (stale-run cleanup, ledger reconciliation)
+pix-rail/                    the Pluggy (Open Finance) integration + one-time bank-connection page
+tooling/actions-server/      the Solana Actions (Blinks) HTTP server for Layer 1
+tooling/subscriptions-test/  isolated devnet tests for the recurring-delegation program calls
+landing/                     the public landing page (static HTML/CSS, no build step)
+docs/                        the Docusaurus documentation site
+```
 
 ## Authors
 
