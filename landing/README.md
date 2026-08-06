@@ -1,6 +1,6 @@
 # Landing page
 
-Static, no build step — plain HTML/CSS. Deployed separately from the
+Static, no build step: plain HTML/CSS. Deployed separately from the
 Docusaurus docs site (`docs/`) and from the ZeroClaw agent config itself.
 
 ## Preview locally
@@ -14,19 +14,19 @@ Open `http://localhost:8899`.
 
 ## Editing
 
-- `index.html` — all copy and structure, plus the brush strokes and counted
+- `index.html`: all copy and structure, plus the brush strokes and counted
   marks, inlined as SVG because the page has no build step to bundle them.
-- `styles.css` — the whole design system. Palette, type scale, the
+- `styles.css`: the whole design system. Palette, type scale, the
   `falou`/`PROVOU` lockup, the state chips, the looping demo animation and the
   responsive rules, all driven by custom properties declared at the top of the
   file.
-- `assets/mark.svg` — the mark (a claw holding a proof seal, drawn as ink
+- `assets/mark.svg`: the mark (a claw holding a proof seal, drawn as ink
   strokes), used as both the favicon and the header icon.
-- `assets/qr-*.svg` — the two Telegram bot QR codes, in ink on cream.
+- `assets/qr-*.svg`: the two Telegram bot QR codes, in ink on cream.
 
 The design system is **Tinta sobre Creme**, shared with the docs site and the
-operator pages. It is written down in full — palette with contrast ratios, type
-roles, motion rules, responsive behaviour — in
+operator pages. It is written down in full: palette with contrast ratios, type
+roles, motion rules, responsive behaviour: in
 `docs/docs/project/design-system.md`. Change a token here, change it there.
 
 Three things to keep intact when editing:
@@ -45,6 +45,6 @@ Three things to keep intact when editing:
 
 Every factual claim on this page (the mainnet signature, the custody bullets,
 the bot links) should stay in sync with `docs/docs/how-it-works/security.md`
-and `docs/docs/evidence/validation.md` in the main documentation site — don't
+and `docs/docs/evidence/validation.md` in the main documentation site: don't
 let this page drift into a stronger claim than what's actually documented and
 tested there.

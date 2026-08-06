@@ -1,5 +1,5 @@
 /* ============================================================
-   TINTA SOBRE CREME — the whole design system, in one file.
+   TINTA SOBRE CREME: the whole design system, in one file.
 
    Ink on cream, and the ink is turquoise. No dark mode, no
    glassmorphism, no gradients, no drop shadows doing the work a
@@ -18,7 +18,7 @@
   /* --- Colour ---------------------------------------------- */
   --cream: #f4f0e5;        /* the page */
   --cream-deep: #ebe5d6;   /* cards, wells */
-  --ink: #0e3d3f;          /* text, headings — deep teal, never navy */
+  --ink: #0e3d3f;          /* text, headings: deep teal, never navy */
   --ink-soft: #427070;     /* secondary text */
   --turquoise: #0a7575;    /* primary: links, buttons, eyebrows, PROVOU */
   --turquoise-bright: #14a8a0; /* decorative strokes only, never text */
@@ -186,7 +186,7 @@ h3 {
   letter-spacing: 0.005em;
 }
 
-/* PROVOU is not a filled box. Nothing in this system is filled — emphasis is
+/* PROVOU is not a filled box. Nothing in this system is filled, emphasis is
    made with a drawn mark, the way somebody circles the line that matters. The
    enclosure is the gesture of a stamp, in the same ink as everything else. */
 .lockup .provou {
@@ -213,7 +213,7 @@ h3 {
 }
 
 /* At small sizes an enclosure closes up into a blob, so the header and footer
-   get a single underline swash instead — same hand, less of it. */
+   get a single underline swash instead: same hand, less of it. */
 .lockup.sm .provou .seal {
   top: auto;
   bottom: -0.34em;

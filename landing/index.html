@@ -1,22 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Falou e Provou — Anyone can claim. The chain proves.</title>
-<meta name="description" content="An operator-hosted ZeroClaw agent that bills in USDC on Solana and Pix in BRL, and refuses to record anything it did not verify at the source. Built for the Superteam Brasil ZeroClaw bounty.">
-<meta property="og:title" content="Falou e Provou — Anyone can claim. The chain proves.">
-<meta property="og:description" content="A billing agent that only marks something PROVEN when the source itself confirms it — a Solana signature, or a real bank statement read.">
+<title>Falou e Provou: qualquer um alega, a chain prova.</title>
+<meta name="description" content="Um agente ZeroClaw hospedado pelo próprio operador que cobra em USDC na Solana e em Pix, e se recusa a registrar qualquer coisa que não tenha verificado na fonte. Feito para o bounty ZeroClaw da Superteam Brasil.">
+<meta property="og:title" content="Falou e Provou: qualquer um alega, a chain prova.">
+<meta property="og:description" content="Um agente de cobrança que só marca algo como provado quando a própria fonte confirma: uma assinatura na Solana, ou uma leitura do extrato bancário de verdade.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
 <meta name="theme-color" content="#f4f0e5">
 <link rel="icon" type="image/svg+xml" href="assets/mark.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css">
 <script>
-  /* Content that rises in is only hidden if there is script to bring it back.
-     Without this the page is blank to anyone with JavaScript off, and to
-     anything that reads it without running scripts. */
+  /* O conteúdo que sobe ao entrar em cena só fica escondido se houver script
+     para trazê-lo de volta. Sem isso a página fica em branco para quem está
+     com JavaScript desligado, e para qualquer coisa que leia a página sem
+     rodar script. */
   document.documentElement.classList.add('js');
 </script>
 </head>
@@ -29,14 +31,14 @@
       <span class="lockup sm"><span class="falou">falou</span><span class="provou">PROVOU<svg class="seal" viewBox="0 0 240 16" fill="none" preserveAspectRatio="none" aria-hidden="true"><g stroke="currentColor" stroke-linecap="round" fill="none"><path d="M6 9C46 3 96 13 146 7S212 4 234 10" stroke-width="3.4" stroke-opacity="0.85"/><path d="M8 13C50 8 100 16 150 11S214 9 232 14" stroke-width="1.8" stroke-opacity="0.45"/></g></svg></span></span>
     </a>
     <nav class="links">
-      <a href="#rule">The rule</a>
-      <a href="#how">How it works</a>
-      <a href="#proof">The proof</a>
-      <a href="#custody">Custody</a>
-      <a href="https://ceciliagalvaoo.github.io/falou_provou/">Docs</a>
+      <a href="#regra">A regra</a>
+      <a href="#como">Como funciona</a>
+      <a href="#prova">A prova</a>
+      <a href="#custodia">Custódia</a>
+      <a href="https://ceciliagalvaoo.github.io/falou_provou/">Documentação</a>
       <a href="https://github.com/ceciliagalvaoo/falou_provou">GitHub</a>
     </nav>
-    <a class="btn btn-primary" href="https://t.me/falouprovou_bot" target="_blank" rel="noopener">Message the bot</a>
+    <a class="btn btn-primary" href="https://t.me/falouprovou_bot" target="_blank" rel="noopener">Falar com o bot</a>
   </div>
 </header>
 
@@ -44,8 +46,9 @@
 
   <!-- ================= hero ================= -->
   <section class="hero">
-    <!-- Big sweeping arc, top right. Decorative, and deliberately bled off
-         the corner so it reads as a stroke that carried on past the page. -->
+    <!-- Arco largo, canto superior direito. É decorativo, e sangra de
+         propósito para fora do canto, para ler como um traço que continuou
+         para além da página. -->
     <svg class="stroke stroke-a ink-draw" viewBox="0 0 300 300" fill="none" aria-hidden="true">
       <defs>
         <filter id="ink-a" x="-15%" y="-40%" width="130%" height="180%">
@@ -75,16 +78,16 @@
     </svg>
 
     <div class="shell">
-      <span class="badge"><span class="dot"></span> Live on Solana mainnet-beta · running 24/7</span>
+      <span class="badge"><span class="dot"></span> No ar na mainnet-beta da Solana · rodando 24/7</span>
 
       <div class="hero-grid">
         <div>
           <h1 class="lockup lg">
             <span class="falou">falou</span>
             <span class="provou">PROVOU<!--
-              The enclosure: a stamp drawn by hand, twice round, in the same
-              ink as the mark. Stretched to the word rather than fitted, which
-              is what keeps it looking drawn instead of placed.
+              O cerco: um carimbo desenhado à mão, duas voltas, na mesma tinta
+              da marca. Ele é esticado até a palavra em vez de encaixado, que é
+              o que o mantém com cara de desenhado e não de colocado.
            --><svg class="seal ink-draw" viewBox="0 0 400 120" fill="none" preserveAspectRatio="none" aria-hidden="true">
                 <g stroke="currentColor" stroke-linecap="round" fill="none">
                   <path d="M26 60C20 24 128 8 208 10C300 12 380 24 374 60C368 98 262 114 190 112C104 110 32 96 26 60" stroke-width="5" stroke-opacity="0.85" pathLength="1"/>
@@ -94,7 +97,7 @@
           </h1>
 
           <p class="claim">
-            Anyone can claim. The chain proves.
+            Qualquer um alega. A chain prova.
             <svg class="underline ink-draw" viewBox="0 0 240 36" fill="none" aria-hidden="true">
               <defs>
                 <filter id="ink-u" x="-15%" y="-40%" width="130%" height="180%">
@@ -110,155 +113,155 @@
           </p>
 
           <p class="lede">
-            The books for freelancers and small businesses billing across borders — in USDC on Solana and Pix in
-            Brazilian reais. Nothing is ever marked paid until the source itself confirms it: a signature read
-            straight off the chain, or a transaction read straight off the real bank statement.
+            O caixa de quem trabalha por conta própria e cobra de fora, em USDC na Solana e em Pix.
+            Nada aqui é marcado como pago até a própria fonte confirmar: uma assinatura lida direto
+            da chain, ou uma transação lida direto do extrato bancário de verdade.
           </p>
 
           <div class="ctas">
-            <a class="btn btn-primary btn-lg" href="https://t.me/falouprovou_bot" target="_blank" rel="noopener">Message the owner bot →</a>
-            <a class="btn btn-secondary btn-lg" href="https://ceciliagalvaoo.github.io/falou_provou/" target="_blank" rel="noopener">Read the docs</a>
+            <a class="btn btn-primary btn-lg" href="https://t.me/falouprovou_bot" target="_blank" rel="noopener">Falar com o bot do dono →</a>
+            <a class="btn btn-secondary btn-lg" href="https://ceciliagalvaoo.github.io/falou_provou/" target="_blank" rel="noopener">Ler a documentação</a>
           </div>
 
           <p class="microcopy">
             <span class="tally" aria-hidden="true">
               <svg viewBox="0 0 28 24" fill="none"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M3 3C2 9 4 15 3 21" stroke-opacity="0.88"/><path d="M9 3C10 9 8 15 9.5 21" stroke-opacity="0.88"/></g></svg>
             </span>
-            Two live Telegram bots, not a mockup — one for billing, one a read-only dossier for the accountant.
+            Dois bots de Telegram no ar, não é maquete: um cobra, o outro é um dossiê só de leitura para o contador.
           </p>
         </div>
 
         <div class="card demo-card">
-          <span class="demo-label">What every wait in the product looks like</span>
+          <span class="demo-label">O que toda espera no produto parece</span>
           <div class="demo-bubble">“chegou um PIX de R$ 8.500, Empresa XYZ”</div>
           <div class="demo-states">
             <span class="chip falou">FALOU</span>
-            <span class="chip checking">checking the source…</span>
+            <span class="chip checking">conferindo a fonte…</span>
             <span class="chip provou">PROVOU</span>
           </div>
-          <p class="demo-sig mono">231e1610-83b8… · R$ 8.500,00 · matched on the real statement</p>
+          <p class="demo-sig mono">231e1610-83b8… · R$ 8.500,00 · bateu no extrato de verdade</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= the rule ================= -->
-  <section id="rule" class="well">
+  <!-- ================= a regra ================= -->
+  <section id="regra" class="well">
     <div class="shell">
       <div class="section-head rise">
-        <span class="eyebrow">The golden rule</span>
-        <h2>Three states. No fourth way to prove anything.</h2>
-        <p class="lede">Every entry in the ledger, on either rail, is exactly one of these — and only a direct query to the real source can move it to the middle one.</p>
+        <span class="eyebrow">A regra de ouro</span>
+        <h2>Três estados. Não existe um quarto jeito de provar.</h2>
+        <p class="lede">Todo lançamento do caixa, em qualquer um dos dois trilhos, é exatamente um destes. E só uma consulta direta à fonte de verdade move um lançamento para o do meio.</p>
       </div>
       <div class="states-grid">
         <div class="card state-card rise">
           <span class="state-tag falou">FALOU</span>
-          <h3>Claimed</h3>
-          <p>Someone alleged it — a screenshot, a forwarded message, or the owner typing it in by hand. Registered, but weightless on its own.</p>
+          <h3>Alegado</h3>
+          <p>Alguém disse que aconteceu: um print, uma mensagem encaminhada, ou o próprio dono digitando na mão. Fica registrado, e sozinho não pesa nada.</p>
         </div>
         <div class="card state-card rise">
           <span class="state-tag provou">PROVOU</span>
-          <h3>Proven</h3>
-          <p>A confirmed signature read directly off Solana, or a transaction read directly off the real bank statement via Open Finance. The only state nobody can fake.</p>
+          <h3>Provado</h3>
+          <p>Uma assinatura confirmada, lida direto da Solana, ou uma transação lida direto do extrato bancário de verdade via Open Finance. O único estado que ninguém falsifica.</p>
         </div>
         <div class="card state-card rise">
           <span class="state-tag nao">NÃO PROVOU</span>
-          <h3>Unproven</h3>
-          <p>Claimed, and the source was actually checked and did not confirm it — a stronger, more specific claim than “we couldn't check.”</p>
+          <h3>Não provado</h3>
+          <p>Alegado, e a fonte foi consultada de verdade e não confirmou. É uma afirmação mais forte e mais específica do que “não deu para conferir”.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= how it works ================= -->
-  <section id="how">
+  <!-- ================= como funciona ================= -->
+  <section id="como">
     <div class="shell">
       <div class="section-head rise">
-        <span class="eyebrow">How it works</span>
-        <h2>Four steps, every time, no exceptions.</h2>
-        <p class="lede">The same four steps run whether the money arrived over Solana or over Pix. There is no fast path, and no step a model can talk its way past.</p>
+        <span class="eyebrow">Como funciona</span>
+        <h2>Quatro passos, toda vez, sem exceção.</h2>
+        <p class="lede">Os mesmos quatro passos rodam tanto para dinheiro que chegou pela Solana quanto pelo Pix. Não existe caminho rápido, nem passo que um modelo consiga contornar na conversa.</p>
       </div>
       <div class="steps">
         <div class="step rise">
           <span class="num"></span>
-          <h3>Bill a client</h3>
-          <p>A Solana Pay link for a one-time invoice, an on-chain capped delegation for a recurring one, or a claimed Pix receipt.</p>
+          <h3>Cobrar um cliente</h3>
+          <p>Um link do Solana Pay para uma cobrança avulsa, uma delegação com teto on-chain para uma recorrente, ou um comprovante de Pix alegado.</p>
         </div>
         <div class="step rise">
           <span class="num"></span>
-          <h3>It starts as FALOU</h3>
-          <p>Every claim is logged immediately — nothing is ever hidden, it just isn't trusted yet.</p>
+          <h3>Começa como FALOU</h3>
+          <p>Toda alegação é registrada na hora. Nada fica escondido, só ainda não é tratado como verdade.</p>
         </div>
         <div class="step rise">
           <span class="num"></span>
-          <h3>The source gets checked</h3>
-          <p>A deterministic script queries the chain or the real bank statement directly — never the model's own opinion.</p>
+          <h3>A fonte é consultada</h3>
+          <p>Um script determinístico consulta a chain ou o extrato bancário de verdade, nunca a opinião do próprio modelo.</p>
         </div>
         <div class="step rise">
           <span class="num"></span>
-          <h3>Only a match is stamped</h3>
-          <p>PROVOU if it matches, NÃO PROVOU if the source was checked and it didn't. Nothing else moves the needle.</p>
+          <h3>Só o que bate é carimbado</h3>
+          <p>PROVOU se bate, NÃO PROVOU se a fonte foi consultada e não confirmou. Nada além disso mexe o ponteiro.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= the proof ================= -->
-  <section id="proof" class="well">
+  <!-- ================= a prova ================= -->
+  <section id="prova" class="well">
     <div class="shell">
       <div class="section-head rise">
-        <span class="eyebrow">Don't take our word for it</span>
-        <h2>A real transaction, on real mainnet.</h2>
-        <p class="lede">This isn't a testnet screenshot. Click through and verify it yourself on a public block explorer.</p>
+        <span class="eyebrow">Não acredite na nossa palavra</span>
+        <h2>Uma transação de verdade, na mainnet de verdade.</h2>
+        <p class="lede">Isso não é print de testnet. Clique e confira você mesmo em um explorador de blocos público.</p>
       </div>
 
       <div class="card proof-card rise">
         <div class="proof-row">
-          <span class="k">Signature</span>
+          <span class="k">Assinatura</span>
           <a class="v link" href="https://solscan.io/tx/3DSMW25MJ7eR7CkVwDwCMDZuum2MkyUGfHvBxxTq36BkrJnjJkBN1Ng5LtausUFjURzFH3LCpmENBmqkbRYNM58B" target="_blank" rel="noopener">3DSMW25M…kbrYNM58B ↗</a>
         </div>
         <div class="proof-row">
-          <span class="k">Network</span>
+          <span class="k">Rede</span>
           <span class="v">solana mainnet-beta</span>
         </div>
         <div class="proof-row">
-          <span class="k">Amount</span>
-          <span class="v">0.05 USDC</span>
+          <span class="k">Valor</span>
+          <span class="v">0,05 USDC</span>
         </div>
         <div class="proof-row">
-          <span class="k">Verified how</span>
-          <span class="v">getTransaction, independently re-checked — not trusted from a UI</span>
+          <span class="k">Como foi verificado</span>
+          <span class="v">getTransaction, reconferido de forma independente, nunca confiando na tela de alguém</span>
         </div>
       </div>
 
       <p class="stat-line rise">
-        <strong>61%</strong> of Brazilian small businesses still pay business expenses from a personal account
+        <strong>61%</strong> dos pequenos negócios brasileiros ainda pagam despesa da empresa pela conta pessoal
         (<a href="https://agenciasebrae.com.br/cultura-empreendedora/61-dos-empreendedores-brasileiros-fazem-pagamentos-da-empresa-com-a-conta-pessoal/" target="_blank" rel="noopener">Sebrae</a>).
-        A fake payment receipt is a five-second Photoshop job. A forged signature on Solana is not.
+        Forjar um comprovante de pagamento é trabalho de cinco segundos no Photoshop. Forjar uma assinatura na Solana não é.
       </p>
     </div>
   </section>
 
-  <!-- ================= try it ================= -->
-  <section id="try">
+  <!-- ================= experimente ================= -->
+  <section id="teste">
     <div class="shell">
       <div class="section-head rise">
-        <span class="eyebrow">Try it yourself</span>
-        <h2>Scan to open it on your own phone.</h2>
-        <p class="lede">Real bots, live right now — not a mockup screenshot. Send a message and watch a real claim get checked against the real source.</p>
+        <span class="eyebrow">Experimente você mesmo</span>
+        <h2>Aponte a câmera e abra no seu celular.</h2>
+        <p class="lede">Bots de verdade, no ar agora, não é print de maquete. Mande uma mensagem e veja uma alegação de verdade sendo conferida contra a fonte de verdade.</p>
       </div>
       <div class="qr-grid">
         <div class="card qr-card rise">
-          <img src="assets/qr-dono.svg" alt="QR code linking to the owner bot on Telegram, @falouprovou_bot" width="220" height="220">
+          <img src="assets/qr-dono.svg" alt="QR code que abre o bot do dono no Telegram, @falouprovou_bot" width="220" height="220">
           <span class="qr-label">
-            <span class="qr-role">Owner — billing, subscriptions, Pix</span>
+            <span class="qr-role">Dono: cobrança, assinaturas, Pix</span>
             <a class="qr-handle" href="https://t.me/falouprovou_bot" target="_blank" rel="noopener">@falouprovou_bot</a>
           </span>
         </div>
         <div class="card qr-card rise">
-          <img src="assets/qr-contador.svg" alt="QR code linking to the accountant bot on Telegram, @falouprovou_contador_bot" width="220" height="220">
+          <img src="assets/qr-contador.svg" alt="QR code que abre o bot do contador no Telegram, @falouprovou_contador_bot" width="220" height="220">
           <span class="qr-label">
-            <span class="qr-role">Accountant — read-only dossier</span>
+            <span class="qr-role">Contador: dossiê só de leitura</span>
             <a class="qr-handle" href="https://t.me/falouprovou_contador_bot" target="_blank" rel="noopener">@falouprovou_contador_bot</a>
           </span>
         </div>
@@ -266,13 +269,13 @@
     </div>
   </section>
 
-  <!-- ================= custody ================= -->
-  <section id="custody" class="well">
+  <!-- ================= custódia ================= -->
+  <section id="custodia" class="well">
     <div class="shell">
       <div class="section-head rise">
-        <span class="eyebrow">Custody</span>
-        <h2>The agent never holds an unbounded key.</h2>
-        <p class="lede">Three different custody patterns, chosen deliberately — none of them is “the agent can spend whatever it wants.”</p>
+        <span class="eyebrow">Custódia</span>
+        <h2>O agente nunca segura uma chave sem teto.</h2>
+        <p class="lede">Três padrões de custódia diferentes, escolhidos de propósito. Nenhum deles é “o agente gasta o que quiser”.</p>
       </div>
       <ul class="custody-list">
         <li class="rise">
@@ -280,8 +283,8 @@
             <svg viewBox="0 0 28 24" fill="none"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M3 3C2 9 4 15 3 21" stroke-opacity="0.88"/></g></svg>
           </span>
           <span>
-            <strong>The client always signs directly.</strong>
-            For every one-time invoice and every subscription authorization, the only signature that moves or authorizes funds is the client's own wallet. The agent never touches that key.
+            <strong>Quem assina é sempre o cliente.</strong>
+            Em toda cobrança avulsa e em toda autorização de assinatura recorrente, a única assinatura que move ou autoriza dinheiro é a da carteira do próprio cliente. O agente nunca encosta nessa chave.
           </span>
         </li>
         <li class="rise">
@@ -289,8 +292,8 @@
             <svg viewBox="0 0 28 24" fill="none"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M3 3C2 9 4 15 3 21" stroke-opacity="0.88"/><path d="M9 3C10 9 8 15 9.5 21" stroke-opacity="0.88"/></g></svg>
           </span>
           <span>
-            <strong>The agent's own key is capped by the Solana program itself.</strong>
-            Recurring pulls use a dedicated key that can only call one instruction, within a per-period cap the client set on-chain — verified directly: an attempt to pull above the cap is rejected by the program, not by our code.
+            <strong>A chave do próprio agente tem teto imposto pelo programa da Solana.</strong>
+            As cobranças recorrentes usam uma chave dedicada que só consegue chamar uma instrução, dentro de um teto por período que o cliente definiu on-chain. Isso foi verificado direto: uma tentativa de puxar acima do teto é recusada pelo programa, não pelo nosso código.
           </span>
         </li>
         <li class="rise">
@@ -298,41 +301,41 @@
             <svg viewBox="0 0 28 24" fill="none"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M3 3C2 9 4 15 3 21" stroke-opacity="0.88"/><path d="M9 3C10 9 8 15 9.5 21" stroke-opacity="0.88"/><path d="M15 3C14.5 9.5 15.6 14 14.6 20.6" stroke-opacity="0.88"/></g></svg>
           </span>
           <span>
-            <strong>Supplier payments need a human approval the agent cannot give itself.</strong>
-            Tested directly with a real prompt-injection attack — the agent's own attempt to self-approve returns a genuine denial, not a no-op.
+            <strong>Pagar fornecedor exige uma aprovação humana que o agente não consegue se dar.</strong>
+            Testado direto com um ataque real de prompt injection: a tentativa do próprio agente de se autoaprovar volta como uma recusa de verdade, não como um comando que não faz nada.
           </span>
         </li>
       </ul>
       <p style="margin-top: 2.5rem">
-        <a class="btn-ghost" href="https://ceciliagalvaoo.github.io/falou_provou/docs/how-it-works/security" target="_blank" rel="noopener">Read the full security write-up, including the incident that shaped this design →</a>
+        <a class="btn-ghost" href="https://ceciliagalvaoo.github.io/falou_provou/docs/how-it-works/security" target="_blank" rel="noopener">Leia a análise de segurança completa, incluindo o incidente que moldou esse desenho →</a>
       </p>
     </div>
   </section>
 
-  <!-- ================= why Brazil ================= -->
-  <section id="scope">
+  <!-- ================= por que Brasil ================= -->
+  <section id="escopo">
     <div class="shell">
       <div class="section-head rise">
-        <span class="eyebrow">Why Brazil first</span>
-        <h2>The hardest version of the problem, not a limitation.</h2>
-        <p class="lede">Brazil pairs the world's largest instant-payment system by transaction count with a freshly regulated stablecoin-as-FX regime. Two of these three layers are Brazil-specific adapters — the core is universal.</p>
+        <span class="eyebrow">Por que Brasil primeiro</span>
+        <h2>A versão mais difícil do problema, não uma limitação.</h2>
+        <p class="lede">O Brasil junta o maior sistema de pagamento instantâneo do mundo em número de transações com um regime de stablecoin como câmbio recém regulado. Duas destas três camadas são adaptadores específicos do Brasil, o núcleo é universal.</p>
       </div>
       <div class="table-wrap rise">
         <table class="scope">
           <thead>
-            <tr><th>Layer</th><th>Brazil today</th><th>Swap to expand</th></tr>
+            <tr><th>Camada</th><th>No Brasil hoje</th><th>O que trocar para expandir</th></tr>
           </thead>
           <tbody>
-            <tr><td>On-chain billing &amp; verification</td><td>Solana Pay + recurring delegation</td><td>Nothing changes — it's universal</td></tr>
-            <tr><td>Local receiving rail</td><td>Pix via Open Finance</td><td>SEPA, UPI, ACH — an equivalent aggregator</td></tr>
-            <tr><td>Conversion &amp; reporting</td><td>PTAX, Central Bank public API</td><td>Local reference rate, or a market source</td></tr>
+            <tr><td>Cobrança e verificação on-chain</td><td>Solana Pay + delegação recorrente</td><td>Nada muda, é universal</td></tr>
+            <tr><td>Trilho local de recebimento</td><td>Pix via Open Finance</td><td>SEPA, UPI, ACH, um agregador equivalente</td></tr>
+            <tr><td>Conversão e prestação de contas</td><td>PTAX, API pública do Banco Central</td><td>A taxa de referência local, ou uma fonte de mercado</td></tr>
           </tbody>
         </table>
       </div>
     </div>
   </section>
 
-  <!-- ================= final cta ================= -->
+  <!-- ================= cta final ================= -->
   <section>
     <div class="shell">
       <div class="card final-cta rise">
@@ -348,12 +351,12 @@
             <path d="M8 31C64 15 126 37 186 25S304 12 392 27" stroke-width="4" stroke-opacity="0.5" pathLength="1"/>
           </g>
         </svg>
-        <span class="eyebrow">For developers</span>
-        <h2>Run your own in one night.</h2>
-        <p class="lede">Same config, same SOPs, same verification discipline — a path-rewrite script handles the one hardcoded thing, you bring your own keys and credentials.</p>
+        <span class="eyebrow">Para quem desenvolve</span>
+        <h2>Rode o seu em uma noite.</h2>
+        <p class="lede">Mesma config, mesmos SOPs, mesma disciplina de verificação. Um script de reescrita de caminho resolve a única coisa fixa no código, e você traz suas próprias chaves e credenciais.</p>
         <div class="ctas">
-          <a class="btn btn-primary btn-lg" href="https://github.com/ceciliagalvaoo/falou_provou/blob/master/zeroclaw-data/config.toml.example" target="_blank" rel="noopener">See the config template</a>
-          <a class="btn btn-secondary btn-lg" href="https://ceciliagalvaoo.github.io/falou_provou/docs/using-it/reproducibility" target="_blank" rel="noopener">Reproducibility guide</a>
+          <a class="btn btn-primary btn-lg" href="https://github.com/ceciliagalvaoo/falou_provou/blob/master/zeroclaw-data/config.toml.example" target="_blank" rel="noopener">Ver o template de config</a>
+          <a class="btn btn-secondary btn-lg" href="https://ceciliagalvaoo.github.io/falou_provou/docs/using-it/reproducibility" target="_blank" rel="noopener">Guia de reprodutibilidade</a>
         </div>
       </div>
     </div>
@@ -365,10 +368,10 @@
   <div class="shell">
     <div class="foot-brand">
       <span class="lockup sm"><span class="falou">falou</span><span class="provou">PROVOU<svg class="seal" viewBox="0 0 240 16" fill="none" preserveAspectRatio="none" aria-hidden="true"><g stroke="currentColor" stroke-linecap="round" fill="none"><path d="M6 9C46 3 96 13 146 7S212 4 234 10" stroke-width="3.4" stroke-opacity="0.85"/><path d="M8 13C50 8 100 16 150 11S214 9 232 14" stroke-width="1.8" stroke-opacity="0.45"/></g></svg></span></span>
-      <p>Built for the Superteam Brasil bounty “Build Solana-native plugins for Zeroclaw.” Pix rail runs against Pluggy's sandbox by design; the Solana rail has moved real funds on mainnet-beta.</p>
+      <p>Feito para o bounty da Superteam Brasil “Build Solana-native plugins for Zeroclaw”. O trilho de Pix roda contra o sandbox da Pluggy por escolha de projeto; o trilho da Solana já moveu dinheiro de verdade na mainnet-beta.</p>
     </div>
     <div class="foot-links">
-      <a href="https://ceciliagalvaoo.github.io/falou_provou/" target="_blank" rel="noopener">Docs</a>
+      <a href="https://ceciliagalvaoo.github.io/falou_provou/" target="_blank" rel="noopener">Documentação</a>
       <a href="https://github.com/ceciliagalvaoo/falou_provou" target="_blank" rel="noopener">GitHub</a>
       <a href="https://t.me/falouprovou_bot" target="_blank" rel="noopener">Telegram</a>
     </div>
@@ -376,9 +379,9 @@
 </footer>
 
 <script>
-  /* Content rises in as it comes into view. If the browser cannot do
-     IntersectionObserver, or the reader asked for less motion, everything
-     is simply shown — the class that hides it is never applied blind. */
+  /* O conteúdo sobe conforme entra em cena. Se o navegador não tiver
+     IntersectionObserver, ou se a pessoa pediu menos movimento, tudo
+     simplesmente aparece: a classe que esconde nunca é aplicada às cegas. */
   (function () {
     var items = document.querySelectorAll('.rise');
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
