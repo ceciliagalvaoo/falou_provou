@@ -13,7 +13,7 @@ Three rules generate almost all of it:
 
 1. **Ink on cream.** One warm paper background, one turquoise ink. No dark
    surfaces, no gradients, no glassmorphism, no drop shadow doing work a
-   hairline can do — and no filled blocks of colour anywhere except a primary
+   hairline can do, and no filled blocks of colour anywhere except a primary
    button, which is an action rather than a label. Emphasis is made with a
    drawn mark, not with a coloured box.
 2. **Nothing decorative unless it is also true.** The counted marks count real
@@ -30,12 +30,12 @@ Three rules generate almost all of it:
 
 | Token | Value | Used for | Contrast on cream |
 |---|---|---|---|
-| `--cream` | `#f4f0e5` | the page | — |
-| `--cream-deep` | `#ebe5d6` | cards, wells | — |
+| `--cream` | `#f4f0e5` | the page | n/a |
+| `--cream-deep` | `#ebe5d6` | cards, wells | n/a |
 | `--ink` | `#0e3d3f` | body text, headings | 10.5:1 |
 | `--ink-soft` | `#427070` | secondary text | 4.8:1 |
 | `--turquoise` | `#0a7575` | links, buttons, eyebrows, PROVOU | 4.8:1 |
-| `--turquoise-bright` | `#14a8a0` | brush strokes only, never text | — |
+| `--turquoise-bright` | `#14a8a0` | brush strokes only, never text | n/a |
 | `--vermilion` | `#c0391b` | NÃO PROVOU, destructive | 4.8:1 |
 | `--amber` | `#92590f` | in flight: "checking the source…" | 5.0:1 |
 
@@ -54,11 +54,11 @@ turquoise chip from the vermilion one still has to be able to read the ledger.
 
 Three faces, each with one job.
 
-- **Cormorant Garamond** — display. Headlines, card titles, the step numbers,
+- **Cormorant Garamond**: display. Headlines, card titles, the step numbers,
   and the one number in a statistic. A serif at large sizes is what keeps a
   minimal page from reading as a template.
-- **Inter** — everything you actually read: body copy, labels, buttons.
-- **IBM Plex Mono** — the machine's own voice. Signatures, handles, amounts
+- **Inter**: everything you actually read: body copy, labels, buttons.
+- **IBM Plex Mono**: the machine's own voice. Signatures, handles, amounts
   read off a statement, and the three state chips. If a string came from a
   chain or a bank rather than from a person, it is set in mono.
 
@@ -74,7 +74,7 @@ its colour from `currentColor`, so one file serves the header, the hero and the
 favicon without a second copy in a second colour.
 
 The **lockup** sets `falou` quietly, in italic display, and `PROVOU` in the
-machine's own face — mono — with a stamp drawn around it: twice round, by
+machine's own face, mono, with a stamp drawn around it: twice round, by
 hand, in the same ink as the mark. It is deliberately *not* reversed out of a
 filled block. A saturated rectangle would be the loudest thing on a page made
 entirely of strokes and hairlines, and it would be shouting rather than
@@ -95,7 +95,7 @@ the three being louder than the other two.
 **Brush strokes** are two or three offset paths at descending opacity, pushed
 through an `feTurbulence` displacement filter so the edges are never
 mechanical. That layering is what reads as gouache rather than as a vector
-line. They are used large, asymmetric and bled off the edge — hero corners,
+line. They are used large, asymmetric and bled off the edge, hero corners,
 section rules, behind a closing call to action. They are never used small, and
 never as an icon.
 
@@ -113,7 +113,7 @@ themselves in along `stroke-dashoffset` over about 1.3 seconds; content rises
 through checking and into proof on a four-second loop.
 
 None of it is load-bearing. Under `prefers-reduced-motion: reduce` every
-animation stops, and — importantly — anything that animates *from* `opacity: 0`
+animation stops, and, importantly, anything that animates *from* `opacity: 0`
 is pinned back to visible, so a reader who asked for less movement gets a
 finished page rather than an empty one.
 
@@ -124,7 +124,7 @@ finished page rather than an empty one.
   48rem up.
 - Display type is set with `clamp()` rather than at breakpoints, so a headline
   is proportional to the screen instead of jumping between two fixed sizes.
-- Wide content — tables, signatures, code — scrolls inside its own box. The
+- Wide content, tables, signatures, code, scrolls inside its own box. The
   page body never scrolls sideways at any width.
 - Long unbroken strings (a Solana signature, a bot handle) get
   `overflow-wrap: anywhere`, because a 88-character base58 string will
@@ -138,8 +138,8 @@ finished page rather than an empty one.
 
 | File | Surface |
 |---|---|
-| `landing/styles.css` | the landing page — the whole system, as custom properties, no build step |
-| `docs/src/css/custom.css` | this site — the same tokens, mapped onto Infima's variables |
+| `landing/styles.css` | the landing page, the whole system, as custom properties, no build step |
+| `docs/src/css/custom.css` | this site, the same tokens, mapped onto Infima's variables |
 | `docs/src/components/ink/` | `Mark`, `BrushStroke` and `TallyMarks` as React components |
 | `docs/src/pages/index.module.css` | this site's front page |
 | `pix-rail/connect-page/index.html` | the one-time bank-connection page |

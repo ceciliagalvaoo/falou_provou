@@ -49,7 +49,7 @@ const ROUTES = [
     eyebrow: 'The evidence',
     title: 'Real mainnet, real money',
     body:
-      'Actual signatures on Solana mainnet-beta you can open in a block explorer — not a devnet screenshot, and not a simulation.',
+      'Actual signatures on Solana mainnet-beta you can open in a block explorer, not a devnet screenshot, and not a simulation.',
   },
   {
     to: '/docs/using-it/reproducibility',
@@ -65,7 +65,7 @@ const STATES = [
     tag: 'FALOU',
     tagClass: styles.falouTag,
     body:
-      'Someone alleged it — including the owner, typing it in by hand. Registered immediately, and weightless on its own.',
+      'Someone alleged it, including the owner, typing it in by hand. Registered immediately, and weightless on its own.',
   },
   {
     tag: 'PROVOU',
@@ -77,7 +77,7 @@ const STATES = [
     tag: 'NÃO PROVOU',
     tagClass: styles.naoTag,
     body:
-      'Claimed, and the source was actually checked and did not confirm it — a stronger, more specific statement than “we could not check.”',
+      'Claimed, and the source was actually checked and did not confirm it, a stronger, more specific statement than “we could not check.”',
   },
 ];
 
@@ -86,14 +86,14 @@ const BOTS = [
     img: 'img/qr-dono.svg',
     handle: '@falouprovou_bot',
     href: 'https://t.me/falouprovou_bot',
-    role: 'Owner — billing, subscriptions, Pix',
+    role: 'Owner, billing, subscriptions, Pix',
     alt: 'QR code linking to the owner bot on Telegram, @falouprovou_bot',
   },
   {
     img: 'img/qr-contador.svg',
     handle: '@falouprovou_contador_bot',
     href: 'https://t.me/falouprovou_contador_bot',
-    role: 'Accountant — read-only dossier',
+    role: 'Accountant, read-only dossier',
     alt: 'QR code linking to the accountant bot on Telegram, @falouprovou_contador_bot',
   },
 ];
@@ -136,7 +136,7 @@ export default function Home(): React.ReactElement {
 
             <p className={styles.lead}>
               An operator-hosted <Link to="https://github.com/zeroclaw-labs/zeroclaw">ZeroClaw</Link>{' '}
-              agent that bills in two rails — USDC on Solana and Pix in Brazilian reais — and
+              agent that bills in two rails, USDC on Solana and Pix in Brazilian reais, and
               refuses to record anything it cannot independently verify at the source. This is its
               documentation: the architecture, the custody model, the attacks it survived, and the
               real mainnet signatures behind every claim on this page.

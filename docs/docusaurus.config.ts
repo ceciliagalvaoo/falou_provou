@@ -25,6 +25,7 @@ const config: Config = {
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
+  onBrokenAnchors: 'throw',
 
   markdown: {
     hooks: {
@@ -86,7 +87,7 @@ const config: Config = {
     colorMode: {
       // The product is ink on cream. The documentation follows it rather than
       // defaulting to a dark theme that would misrepresent the thing it
-      // describes — but a reader who has asked their system for dark gets it.
+      // describes, but a reader who has asked their system for dark gets it.
       defaultMode: 'light',
       respectPrefersColorScheme: true,
     },
@@ -163,7 +164,7 @@ const config: Config = {
         },
       ],
       copyright:
-        'Falou e Provou — built for the Superteam Brasil bounty "Build Solana-native plugins for Zeroclaw."',
+        'Falou e Provou: built for the Superteam Brasil bounty "Build Solana-native plugins for Zeroclaw."',
     },
     prism: {
       theme: prismThemes.github,

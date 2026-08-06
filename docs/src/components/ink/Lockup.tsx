@@ -4,7 +4,7 @@ import styles from './ink.module.css';
 
 /**
  * The lockup: `falou` said quietly in the display face, and `PROVOU` in the
- * machine's own face with a stamp drawn round it — twice round, by hand, in
+ * machine's own face with a stamp drawn round it, twice round, by hand, in
  * the same ink as the mark.
  *
  * It is deliberately not a filled block. Nothing in this system is filled;

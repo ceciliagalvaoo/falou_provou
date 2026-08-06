@@ -25,7 +25,7 @@ Todo lançamento do caixa, em qualquer um dos dois trilhos, está em exatamente 
 |---|---|---|
 | <span className="fp-state fp-state--falou">FALOU</span> | Alguém alegou, incluindo o próprio dono ao lançar na mão | O dono, e só contra si mesmo |
 | <span className="fp-state fp-state--provou">PROVOU</span> | Uma assinatura confirmada na Solana, ou uma transação lida direto do extrato bancário de verdade via Pluggy | Ninguém |
-| <span className="fp-state fp-state--nao">NÃO PROVOU</span> | Alegado, e a fonte foi consultada e não confirmou: ou negou, ou a transação simplesmente não estava lá | — |
+| <span className="fp-state fp-state--nao">NÃO PROVOU</span> | Alegado, e a fonte foi consultada e não confirmou: ou negou, ou a transação simplesmente não estava lá | n/a |
 
 </div>
 
@@ -45,12 +45,12 @@ mecanismo está descrito em [A regra de ouro](./how-it-works/the-golden-rule.md)
 O produto de verdade são dois bots de Telegram, cada um com um papel e um nível de confiança
 completamente diferentes:
 
-- **`dono`** — a superfície do produto. Emite cobranças avulsas via Solana Pay, autoriza e executa
+- **`dono`**: a superfície do produto. Emite cobranças avulsas via Solana Pay, autoriza e executa
   assinaturas recorrentes dentro de um teto imposto pelo próprio programa on-chain (nunca uma
   chave sem limite), paga fornecedores conhecidos via Solana Blinks com aprovação humana
   obrigatória fora do chat, e registra recebimentos de Pix que só viram PROVOU depois de
   conferidos contra o extrato bancário de verdade.
-- **`contador`** — o dossiê do contador. Responde "quanto consolidou essa semana?" somando os dois
+- **`contador`**: o dossiê do contador. Responde "quanto consolidou essa semana?" somando os dois
   trilhos em reais, e é **estruturalmente incapaz de mover dinheiro**: não porque "escolhe não
   fazer isso", mas porque essa capacidade simplesmente não existe no registro de ferramentas dele.
   Isso foi testado com um ataque real de prompt injection (veja

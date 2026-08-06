@@ -243,7 +243,7 @@
   border: 1px solid var(--fp-hairline);
 }
 
-/* One shape, three inks — no filled tag, because the state is read from the
+/* One shape, three inks: no filled tag, because the state is read from the
    word and its colour rather than from one of the three shouting. */
 .provouTag {
   color: var(--ifm-color-primary);

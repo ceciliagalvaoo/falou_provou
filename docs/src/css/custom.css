@@ -1,5 +1,5 @@
 /**
- * Tinta sobre Creme — the same design system the landing page uses, carried
+ * Tinta sobre Creme, the same design system the landing page uses, carried
  * into the documentation.
  *
  * The tokens below are the same values as `landing/styles.css`. Documentation
@@ -103,7 +103,7 @@ h3 {
 }
 
 /* ============================================================
-   Navbar and footer — hairlines, never shadows
+   Navbar and footer, hairlines, never shadows
    ============================================================ */
 
 .navbar {
@@ -157,7 +157,7 @@ h3 {
 }
 
 /* ============================================================
-   Figures — every diagram, table and screenshot is wrapped in one
+   Figures, every diagram, table and screenshot is wrapped in one
    ============================================================ */
 
 /**
@@ -243,7 +243,7 @@ h3 {
  * `FALOU`, `PROVOU` and `NÃO PROVOU` are the vocabulary of the whole project,
  * so they are typeset as the states they are rather than as generic code.
  * Written in markdown as **FALOU** etc. inside a state span, or simply as
- * inline code — the code path below catches the common case.
+ * inline code, the code path below catches the common case.
  */
 .fp-state {
   display: inline-block;
@@ -277,7 +277,7 @@ h3 {
 }
 
 /* ============================================================
-   Code and admonitions — hairlines, flat surfaces
+   Code and admonitions, hairlines, flat surfaces
    ============================================================ */
 
 .theme-code-block {

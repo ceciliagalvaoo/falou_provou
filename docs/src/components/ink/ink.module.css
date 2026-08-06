@@ -59,7 +59,7 @@
   font-size: clamp(1.75rem, 5vw, 3rem);
 }
 
-/* PROVOU is not a filled box. Nothing in this system is filled — emphasis is
+/* PROVOU is not a filled box. Nothing in this system is filled, emphasis is
    made with a drawn mark, the way somebody circles the line that matters. */
 .provou {
   position: relative;

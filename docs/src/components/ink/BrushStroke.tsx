@@ -9,14 +9,14 @@ type Layer = {d: string; width: number; opacity: number};
 /**
  * Hand-painted turquoise strokes. Each is two or three offset paths at
  * descending opacity, displaced by a turbulence filter so the edges are never
- * mechanical — that layering is what reads as gouache rather than as a vector
+ * mechanical: that layering is what reads as gouache rather than as a vector
  * line.
  *
  * Meant to be used large and asymmetric: hero corners, section rules, page
  * bleeds. Never small, never symmetrical, never as an icon.
  */
 const VARIANTS: Record<BrushVariant, {viewBox: string; layers: Layer[]}> = {
-  // 1 — long wavy horizontal sweep. Dividers, section rules.
+  // 1, long wavy horizontal sweep. Dividers, section rules.
   1: {
     viewBox: '0 0 400 40',
     layers: [
@@ -25,7 +25,7 @@ const VARIANTS: Record<BrushVariant, {viewBox: string; layers: Layer[]}> = {
       {d: 'M10 21C66 6 122 28 182 16S298 4 390 18', width: 2.2, opacity: 0.35},
     ],
   },
-  // 2 — short thick underline swash. Under headlines, beside eyebrows.
+  // 2, short thick underline swash. Under headlines, beside eyebrows.
   2: {
     viewBox: '0 0 240 36',
     layers: [
@@ -33,7 +33,7 @@ const VARIANTS: Record<BrushVariant, {viewBox: string; layers: Layer[]}> = {
       {d: 'M7 27C44 16 94 33 144 22S212 14 233 24', width: 4.5, opacity: 0.5},
     ],
   },
-  // 3 — big sweeping arc. Hero corners, page bleeds.
+  // 3, big sweeping arc. Hero corners, page bleeds.
   3: {
     viewBox: '0 0 300 300',
     layers: [
@@ -42,7 +42,7 @@ const VARIANTS: Record<BrushVariant, {viewBox: string; layers: Layer[]}> = {
       {d: 'M280 4C182 14 80 84 18 232', width: 2.4, opacity: 0.32},
     ],
   },
-  // 4 — wide double wave. Section tops, full-bleed footers.
+  // 4, wide double wave. Section tops, full-bleed footers.
   4: {
     viewBox: '0 0 500 90',
     layers: [

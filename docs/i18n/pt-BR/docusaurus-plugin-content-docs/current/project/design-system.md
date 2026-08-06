@@ -27,12 +27,12 @@ Três regras geram quase tudo:
 
 | Token | Valor | Usada para | Contraste no creme |
 |---|---|---|---|
-| `--cream` | `#f4f0e5` | a página | — |
-| `--cream-deep` | `#ebe5d6` | cartões, poços | — |
+| `--cream` | `#f4f0e5` | a página | n/a |
+| `--cream-deep` | `#ebe5d6` | cartões, poços | n/a |
 | `--ink` | `#0e3d3f` | texto corrido, títulos | 10,5:1 |
 | `--ink-soft` | `#427070` | texto secundário | 4,8:1 |
 | `--turquoise` | `#0a7575` | links, botões, eyebrows, PROVOU | 4,8:1 |
-| `--turquoise-bright` | `#14a8a0` | só traços de pincel, nunca texto | — |
+| `--turquoise-bright` | `#14a8a0` | só traços de pincel, nunca texto | n/a |
 | `--vermilion` | `#c0391b` | NÃO PROVOU, destrutivo | 4,8:1 |
 | `--amber` | `#92590f` | em andamento: "conferindo a fonte…" | 5,0:1 |
 

@@ -13,7 +13,7 @@ const DIAGONAL = 'M1.5 20.5C8 17 18 10 26.5 4';
 
 /**
  * Counted strokes. They only ever appear where something real is being
- * counted — three custody patterns, five user flows — never as decoration
+ * counted, three custody patterns, five user flows, never as decoration
  * for its own sake, because a mark that counts nothing is a lie in a project
  * about not claiming things you cannot show.
  */

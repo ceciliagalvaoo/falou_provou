@@ -23,7 +23,7 @@ Não existe um quarto, e não existe meio ponto.
 |---|---|---|---|
 | <span className="fp-state fp-state--falou">FALOU</span> | Alegado | Alguém disse que aconteceu, incluindo o dono ao lançar na mão | O dono, e só contra si mesmo |
 | <span className="fp-state fp-state--provou">PROVOU</span> | Provado | Uma assinatura confirmada lida da Solana, ou uma transação lida do extrato bancário de verdade via Pluggy | Ninguém |
-| <span className="fp-state fp-state--nao">NÃO PROVOU</span> | Não provado | Alegado, e a fonte foi consultada e não confirmou | — |
+| <span className="fp-state fp-state--nao">NÃO PROVOU</span> | Não provado | Alegado, e a fonte foi consultada e não confirmou | n/a |
 
 </div>
 

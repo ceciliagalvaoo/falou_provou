@@ -21,9 +21,9 @@ no fourth, and there is no partial credit.
 
 | State | What it means | How it is earned | Who can fake it |
 |---|---|---|---|
-| <span className="fp-state fp-state--falou">FALOU</span> | Claimed | Someone alleged it — including the owner, entering it manually | The owner, against themselves only |
+| <span className="fp-state fp-state--falou">FALOU</span> | Claimed | Someone alleged it, including the owner, entering it manually | The owner, against themselves only |
 | <span className="fp-state fp-state--provou">PROVOU</span> | Proven | A confirmed signature read off Solana, or a transaction read off the real bank statement via Pluggy | Nobody |
-| <span className="fp-state fp-state--nao">NÃO PROVOU</span> | Unproven | Claimed, and the source was checked and did not confirm it | — |
+| <span className="fp-state fp-state--nao">NÃO PROVOU</span> | Unproven | Claimed, and the source was checked and did not confirm it | n/a |
 
 </div>
 
@@ -31,7 +31,7 @@ Two things about this table matter more than they look.
 
 **FALOU is not a failure state.** Every claim is recorded the moment it is
 made, including claims that later turn out to be false. Nothing is hidden or
-silently dropped — it is simply not trusted yet. A ledger that quietly discards
+silently dropped: it is simply not trusted yet. A ledger that quietly discards
 what it cannot verify is a ledger that is lying by omission.
 
 **NÃO PROVOU is a stronger statement than "unknown".** It does not mean the
@@ -48,14 +48,14 @@ the owner insisting. All of those are claims, and claims are
 
 Neither does the model's own reading of any of those things. An agent that
 looks at a receipt image and concludes "this appears to be a valid payment" has
-produced a claim, not a proof — it has just laundered a human claim through a
+produced a claim, not a proof: it has just laundered a human claim through a
 machine.
 
 Only a direct, independent read of the real source counts:
 
-- **Solana** — a confirmed signature, fetched with `getTransaction` and
+- **Solana**: a confirmed signature, fetched with `getTransaction` and
   re-checked from scratch.
-- **Pix** — a transaction found in the real bank statement, read through
+- **Pix**: a transaction found in the real bank statement, read through
   Pluggy's Open Finance API, matched on amount and time window.
 
 ## Where the rule actually lives
@@ -63,7 +63,7 @@ Only a direct, independent read of the real source counts:
 The rule is not enforced by asking the model to behave. It is enforced by the
 shape of the procedures it has to run.
 
-Every critical verification is a **SOP** — a multi-step procedure defined in
+Every critical verification is a **SOP**: a multi-step procedure defined in
 plain text (`SOP.md` + `SOP.toml`) rather than left to the model's judgement.
 The steps that do the actual checking call deterministic scripts over `shell`.
 The model's job is to decide *which* procedure applies and to talk to the
@@ -78,7 +78,7 @@ human; it is never the thing that decides whether money arrived.
 | `invoice-watch` | One-time Solana Pay invoice | two independent reads against the chain |
 | `subscription-pull` | Recurring charge | a real, confirmed `transfer_recurring` call |
 | `pix-watch` | Pix receipt | a real transaction found in the statement via Pluggy |
-| `supplier-payment` | Supplier payment | never writes PROVOU at all — sharing a payment link is not proof a payment happened |
+| `supplier-payment` | Supplier payment | never writes PROVOU at all, sharing a payment link is not proof a payment happened |
 
 </div>
 
@@ -92,7 +92,7 @@ stays a claim forever.
 second script re-verifies the signature from scratch without trusting the first
 result.
 
-That redundancy is not general paranoia — it is a scar. During development, a
+That redundancy is not general paranoia: it is a scar. During development, a
 smaller model **fabricated a signature** that had never existed, and the entry
 was stamped proven on the strength of it. The full incident, including what
 changed afterwards, is in
