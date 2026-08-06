@@ -91,7 +91,7 @@ reverifica a assinatura do zero, sem confiar no resultado do primeiro.
 Essa redundância não é paranoia genérica, é cicatriz. Durante o desenvolvimento, um modelo menor
 **fabricou uma assinatura** que nunca existiu, e o lançamento foi carimbado como provado em cima
 disso. O incidente completo, inclusive o que mudou depois, está em
-[Segurança e custódia](/docs/how-it-works/security#the-single-most-important-finding-of-this-project-a-model-swap-that-broke-the-golden-rule).
+[Segurança e custódia](./security.md).
 
 A correção que importou não foi "usar um modelo melhor". Foi deixar o caminho de verificação
 estruturalmente incapaz de aceitar um valor produzido pelo modelo.
@@ -104,4 +104,4 @@ tentativa de burlar a aprovação de pagamento a fornecedor, e um prompt injecti
 transferência de fundos do agente contador, que é só de leitura.
 
 Cada tentativa, e o que ela devolveu, está documentada em
-[Segurança e custódia](/docs/how-it-works/security#real-attacks-tested-against-the-live-agent).
+[Segurança e custódia](./security.md).

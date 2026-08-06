@@ -34,11 +34,11 @@ consulta direta e verificável de forma independente à fonte real consegue.
 
 Isso não é promessa de marketing. Foi **testado ao vivo contra o agente rodando de verdade**,
 inclusive sob ataques deliberados de manipulação (veja
-[Segurança e custódia](/docs/how-it-works/security)), e **já foi quebrado uma vez, durante o
+[Segurança e custódia](./how-it-works/security.md)), e **já foi quebrado uma vez, durante o
 desenvolvimento**
-([o incidente completo](/docs/how-it-works/security#the-single-most-important-finding-of-this-project-a-model-swap-that-broke-the-golden-rule)),
+([o incidente completo](./how-it-works/security.md)),
 que é exatamente o que levou a regra a ser endurecida estruturalmente, e não por instrução. O
-mecanismo está descrito em [A regra de ouro](/docs/how-it-works/the-golden-rule).
+mecanismo está descrito em [A regra de ouro](./how-it-works/the-golden-rule.md).
 
 ## Os dois agentes
 
@@ -54,7 +54,7 @@ completamente diferentes:
   trilhos em reais, e é **estruturalmente incapaz de mover dinheiro**: não porque "escolhe não
   fazer isso", mas porque essa capacidade simplesmente não existe no registro de ferramentas dele.
   Isso foi testado com um ataque real de prompt injection (veja
-  [Segurança e custódia](/docs/how-it-works/security)).
+  [Segurança e custódia](./how-it-works/security.md)).
 
 ### Experimente você mesmo: aponte a câmera e abra um bot
 
@@ -85,33 +85,32 @@ Os dois estão no ar agora, não é maquete.
 
 Quatro perguntas, quatro categorias. Nada está documentado em dois lugares.
 
-**O que é**: você está aqui. [O contexto](/docs/context) cobre por que isso existe, o que
+**O que é**: você está aqui. [O contexto](./context.md) cobre por que isso existe, o que
 substitui, e por que o Brasil é a versão mais difícil do problema em vez de uma versão estreita
 dele.
 
-**Como funciona**: o desenho. [A regra de ouro](/docs/how-it-works/the-golden-rule) é a regra em
-si e onde ela é imposta no código. [Arquitetura](/docs/how-it-works/architecture) é como as peças
+**Como funciona**: o desenho. [A regra de ouro](./how-it-works/the-golden-rule.md) é a regra em
+si e onde ela é imposta no código. [Arquitetura](./how-it-works/architecture.md) é como as peças
 se encaixam: SOPs, skills, os dois trilhos, a stack.
-[Segurança e custódia](/docs/how-it-works/security) é o modelo de custódia, todos os ataques
+[Segurança e custódia](./how-it-works/security.md) é o modelo de custódia, todos os ataques
 rodados contra o agente ao vivo, e o incidente que moldou o projeto.
 
-**Usando**: operação. [Fluxos de uso](/docs/using-it/user-flows) é o que uma pessoa de verdade
+**Usando**: operação. [Fluxos de uso](./using-it/user-flows.md) é o que uma pessoa de verdade
 digita e o que deve acontecer, passo a passo, nos cinco fluxos.
-[Deploy](/docs/using-it/deployment) é como e onde isso roda 24/7.
-[Reprodutibilidade](/docs/using-it/reproducibility) é como levantar tudo do zero em outra máquina.
+[Deploy](./using-it/deployment.md) é como e onde isso roda 24/7.
+[Reprodutibilidade](./using-it/reproducibility.md) é como levantar tudo do zero em outra máquina.
 
-**Evidência**: prova de que é real. [Validação no mundo real](/docs/evidence/validation) são as
+**Evidência**: prova de que é real. [Validação no mundo real](./evidence/validation.md) são as
 assinaturas de mainnet de verdade, abríveis em um explorador de blocos.
-[Bugs encontrados e corrigidos](/docs/evidence/bugs-found) é todo bug real encontrado nos testes,
+[Bugs encontrados e corrigidos](./evidence/bugs-found.md) é todo bug real encontrado nos testes,
 como cada um foi corrigido, e as poucas coisas genuinamente ainda abertas.
 
-**Projeto**: [Sistema de design](/docs/project/design-system) e [Time](/docs/project/team).
+**Projeto**: [Sistema de design](./project/design-system.md) e [Time](./project/team.md).
 
 :::note[Sobre o idioma]
 
-A documentação existe em inglês e em português, e o seletor fica no canto superior direito. O
-produto em si fala português, porque é o idioma de quem usa. Algumas páginas mais técnicas ainda
-aparecem em inglês nesta versão: quando isso acontece, é a versão em inglês sendo exibida, e o
-conteúdo é o mesmo.
+Esta documentação existe por inteiro em português e em inglês, com o mesmo conteúdo nas duas. O
+seletor fica no canto superior direito. O produto em si fala português, porque é o idioma de quem
+usa; a versão em inglês existe porque a listagem do bounty é global.
 
 :::

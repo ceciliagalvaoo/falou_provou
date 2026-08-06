@@ -79,7 +79,7 @@ vez de supor discretamente o melhor. Um produto que diz não para quem paga por 
 estranha de se construir, e é a única versão disso que vale alguma coisa.
 
 O resto desta documentação é sobre como essa recusa é imposta no código, e não prometida num
-prompt. Comece por [A regra de ouro](/docs/how-it-works/the-golden-rule).
+prompt. Comece por [A regra de ouro](./how-it-works/the-golden-rule.md).
 
 ## Por que o Brasil primeiro
 
@@ -107,12 +107,12 @@ brasileiro.
 ## O que este projeto deliberadamente não afirma
 
 O trilho da Solana já moveu dinheiro de verdade na mainnet-beta, e as assinaturas estão
-publicadas em [Validação no mundo real](/docs/evidence/validation). O trilho de Pix roda contra o
+publicadas em [Validação no mundo real](./evidence/validation.md). O trilho de Pix roda contra o
 sandbox da Pluggy por escolha de projeto, e o motivo está em
-[Reprodutibilidade](/docs/using-it/reproducibility). O agente **tem** uma chave privada real e
+[Reprodutibilidade](./using-it/reproducibility.md). O agente **tem** uma chave privada real e
 reutilizável, e o que se garante sobre ela é mais estreito do que "sem chaves": veja
-[Segurança e custódia](/docs/how-it-works/security). Tudo que continua em aberto está listado,
-sem maquiagem, em [Bugs encontrados e corrigidos](/docs/evidence/bugs-found).
+[Segurança e custódia](./how-it-works/security.md). Tudo que continua em aberto está listado,
+sem maquiagem, em [Bugs encontrados e corrigidos](./evidence/bugs-found.md).
 
 ## Uma nota sobre estes números
 
