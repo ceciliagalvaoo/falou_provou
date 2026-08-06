@@ -16,7 +16,12 @@ __pycache__/
 *.pyc
 pix-rail/.env
 pix-rail/credentials.json
+# The agent's own run-evidence folder. Anchored exceptions below, because
+# the documentation has legitimate 'evidence' sections and this rule silently
+# swallowed two translated pages once already.
 evidence/
+!docs/docs/evidence/
+!docs/i18n/**/evidence/
 
 # Working material for the submission: strategy dossier, video script,
 # animation briefs. Public repo, so this stays local.
