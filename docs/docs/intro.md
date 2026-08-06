@@ -91,7 +91,7 @@ Both are live right now, not a mockup.
 
 Four questions, four categories. Nothing is documented in two places.
 
-**What it is** — you are here. [The problem](/docs/problem-and-solution) covers
+**What it is** — you are here. [The context](/docs/context) covers
 why this exists, what it replaces, and why Brazil is the hardest version of the
 problem rather than a narrow one.
 

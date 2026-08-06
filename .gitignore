@@ -17,3 +17,7 @@ __pycache__/
 pix-rail/.env
 pix-rail/credentials.json
 evidence/
+
+# Working material for the submission: strategy dossier, video script,
+# animation briefs. Public repo, so this stays local.
+compreensao/

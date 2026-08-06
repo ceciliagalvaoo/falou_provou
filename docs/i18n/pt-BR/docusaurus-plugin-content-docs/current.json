@@ -1,0 +1,18 @@
+{
+  "sidebar.docsSidebar.category.How it works": {
+    "message": "Como funciona",
+    "description": "The label for category How it works in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Using it": {
+    "message": "Usando",
+    "description": "The label for category Using it in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Evidence": {
+    "message": "Evidência",
+    "description": "The label for category Evidence in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Project": {
+    "message": "Projeto",
+    "description": "The label for category Project in sidebar docsSidebar"
+  }
+}

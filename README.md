@@ -217,7 +217,7 @@ two places.
 
 | | |
 |---|---|
-| **What it is** | [Overview](https://ceciliagalvaoo.github.io/falou_provou/docs/intro) · [The problem](https://ceciliagalvaoo.github.io/falou_provou/docs/problem-and-solution) |
+| **What it is** | [Overview](https://ceciliagalvaoo.github.io/falou_provou/docs/intro) · [The context](https://ceciliagalvaoo.github.io/falou_provou/docs/context) |
 | **How it works** | [The golden rule](https://ceciliagalvaoo.github.io/falou_provou/docs/how-it-works/the-golden-rule) · [Architecture](https://ceciliagalvaoo.github.io/falou_provou/docs/how-it-works/architecture) · [Security & custody](https://ceciliagalvaoo.github.io/falou_provou/docs/how-it-works/security) |
 | **Using it** | [User flows](https://ceciliagalvaoo.github.io/falou_provou/docs/using-it/user-flows) · [Deployment](https://ceciliagalvaoo.github.io/falou_provou/docs/using-it/deployment) · [Reproducibility](https://ceciliagalvaoo.github.io/falou_provou/docs/using-it/reproducibility) |
 | **Evidence** | [Real-world validation](https://ceciliagalvaoo.github.io/falou_provou/docs/evidence/validation) · [Bugs found & fixed](https://ceciliagalvaoo.github.io/falou_provou/docs/evidence/bugs-found) |

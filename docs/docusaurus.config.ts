@@ -10,7 +10,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Falou e Provou',
   tagline: 'Anyone can claim. The chain proves.',
-  favicon: 'img/logo.svg',
+  favicon: 'img/favicon.svg',
 
   future: {
     v4: true,
@@ -32,9 +32,16 @@ const config: Config = {
     },
   },
 
+  // The product is Brazilian and its users read Portuguese. The bounty is
+  // judged on a global listing and its write-up is English. So the site is
+  // both, and the reader picks in the navbar rather than being guessed at.
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'pt-BR'],
+    localeConfigs: {
+      en: {label: 'English', htmlLang: 'en'},
+      'pt-BR': {label: 'Português', htmlLang: 'pt-BR'},
+    },
   },
 
   presets: [
@@ -111,6 +118,10 @@ const config: Config = {
           label: 'GitHub',
           position: 'right',
         },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
       ],
     },
     footer: {
@@ -120,7 +131,7 @@ const config: Config = {
           title: 'Understand',
           items: [
             {label: 'Overview', to: '/docs/intro'},
-            {label: 'The problem', to: '/docs/problem-and-solution'},
+            {label: 'The context', to: '/docs/context'},
             {label: 'The golden rule', to: '/docs/how-it-works/the-golden-rule'},
             {label: 'Architecture', to: '/docs/how-it-works/architecture'},
           ],
