@@ -1,20 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Falou e Provou seal">
-  <defs>
-    <linearGradient id="seal-fill" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2fd9b4"/>
-      <stop offset="100%" stop-color="#1a8870"/>
-    </linearGradient>
-  </defs>
-  <polygon
-    points="16,1.5 28.1,8.75 28.1,23.25 16,30.5 3.9,23.25 3.9,8.75"
-    fill="url(#seal-fill)"
-  />
-  <polyline
-    points="10,17 14.2,21.2 22.5,10.5"
-    fill="none"
-    stroke="#ffffff"
-    stroke-width="3"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" role="img" aria-label="Falou e Provou">
+  <!-- Same mark as the landing page: a claw holding a proof seal, drawn as
+       ink strokes rather than as a filled icon. -->
+  <g stroke="#0a7575" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M14 60C36 46 58 52 70 70" stroke-width="9" stroke-opacity="0.82"/>
+    <path d="M14 136C36 150 58 144 70 126" stroke-width="9" stroke-opacity="0.82"/>
+    <path d="M78 48C112 40 156 42 182 50C190 78 190 122 182 148C150 158 106 158 78 148C70 120 70 76 78 48Z" stroke-width="8.5"/>
+    <path d="M96 100C104 110 111 118 118 127C134 105 150 84 166 64" stroke-width="11"/>
+  </g>
 </svg>
