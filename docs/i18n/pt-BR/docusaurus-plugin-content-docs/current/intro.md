@@ -73,12 +73,43 @@ não vinculou**, o que é de propósito e não limitação: os peer groups do Ze
 são opt-in mútuo e negam por padrão, então um agente que cobra e aceitasse
 mensagem de estranhos seria uma falha de custódia, não uma demonstração. Apontar
 a câmera abre a conversa, e o bot vai dizer que precisa de aprovação do
-operador. Peça, que a gente vincula o seu id.
+operador.
 
 O que não depende de autorização de ninguém é a chain. A assinatura de mainnet
 em [Validação no mundo real](./evidence/validation.md) abre em qualquer
 explorador de blocos público, e é o único tipo de prova que este produto
 aceitaria vindo de outra pessoa.
+
+### Para avaliadores: como testar de verdade
+
+Ler não é a mesma coisa que testar, e esta seção existe pra que a segunda coisa
+leve menos de um minuto pra começar.
+
+1. **Assista à demo primeiro, se só tiver três minutos.** Está linkada acima
+   e mostra os dois bots ao vivo, incluindo uma transação real na mainnet.
+2. **Pra mandar mensagem pra um bot você mesmo**, aponte a câmera pra um dos
+   códigos na Figura 1, ou abra
+   [@falouprovou_bot](https://t.me/falouprovou_bot) (dono) ou
+   [@falouprovou_contador_bot](https://t.me/falouprovou_contador_bot)
+   (contador) direto no Telegram.
+3. **O bot não vai responder de primeira.** Ele vai dizer que precisa de
+   aprovação do operador — esse é o comportamento de negar por padrão
+   descrito acima, não um deploy quebrado. Manda seu ID numérico do Telegram
+   (pega com o [@userinfobot](https://t.me/userinfobot) se ainda não souber
+   qual é) pra quem estiver em contato com você sobre essa submissão, e o
+   vínculo é feito em minutos.
+4. **Você só vai ser vinculado ao `contador`**, o agente-dossiê só de
+   leitura, nunca ao `dono`. Isso não é uma demo menor dada a avaliadores no
+   lugar da coisa de verdade: o `contador` não tem nenhuma ferramenta no
+   registro dele capaz de mover dinheiro, então essa é a mesma instância
+   completa que um contador de verdade usaria. Depois de vinculado, pergunte
+   algo como "quanto consolidou essa semana?" e ele responde a partir do
+   caixa real.
+5. **Se você quiser ver o `dono` agindo em vez de só assistir ao vídeo**,
+   avise isso no pedido de acesso e dá pra fazer uma demonstração ao vivo
+   numa call em vez disso, já que vincular uma segunda identidade não
+   verificada ao agente que de fato cobra e paga é exatamente o tipo de
+   atalho de custódia que o próprio desenho deste produto argumenta contra.
 
 <div className="fp-figure">
 

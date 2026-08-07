@@ -78,12 +78,41 @@ has not bound**, which is deliberate rather than a limitation: peer groups in
 ZeroClaw are mutual opt-in and deny by default, so a billing agent that accepted
 messages from strangers would be a custody failure rather than a demonstration.
 Scanning a code opens the chat, and the bot will say it needs operator approval.
-Ask and we will bind your id.
 
 What needs no permission from anyone is the chain. The mainnet signature in
 [Real-world validation](/docs/evidence/validation) opens in any public block
 explorer, and that is the only kind of proof this product would accept from
 someone else.
+
+### For evaluators: how to actually test this
+
+Reading is not the same as testing, and this section exists so the second one
+takes under a minute to start.
+
+1. **Watch the demo first if you only have three minutes.** It is linked
+   above and shows both bots live, including a real mainnet transaction.
+2. **To message a bot yourself**, scan one of the codes in Figure 1, or open
+   [@falouprovou_bot](https://t.me/falouprovou_bot) (owner) or
+   [@falouprovou_contador_bot](https://t.me/falouprovou_contador_bot)
+   (accountant) directly on Telegram.
+3. **The bot will not answer at first.** It will reply that it needs operator
+   approval, that is the deny-by-default behaviour described above, not a
+   broken deployment. Send your numeric Telegram user ID (get it from
+   [@userinfobot](https://t.me/userinfobot) if you do not already know it) to
+   whoever you are in contact with about this submission, and it will be
+   bound within minutes.
+4. **You will only ever be bound to `contador`**, the read-only dossier
+   agent, never to `dono`. This is not a smaller demo given to evaluators
+   instead of the real thing: `contador` has no tool in its registry capable
+   of moving money, so this is the actual, complete product for that agent,
+   the same instance a real accountant would use. Once bound, ask it
+   something like "how much has been consolidated this week?" and it will
+   answer from the real ledger.
+5. **If you want to see `dono` act rather than just watch the video**,
+   say so when you request access and it can be demonstrated live in a
+   call instead, since binding a second, unverified identity to the
+   agent that can actually bill and pay is exactly the kind of
+   custody shortcut this product's own design argues against.
 
 <div className="fp-figure">
 
