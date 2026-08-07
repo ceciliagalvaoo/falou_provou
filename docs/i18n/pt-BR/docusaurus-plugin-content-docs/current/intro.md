@@ -11,7 +11,17 @@ recusa a registrar qualquer coisa que não consiga verificar de forma independen
 
 Feito para o bounty da Superteam Brasil **"Build Solana-native plugins for Zeroclaw."**
 
-**Landing page:** [falou-provou.onrender.com](https://falou-provou.onrender.com)
+**[Assista à demo](https://youtu.be/1YYHAs6ga1c)** ·
+**[Landing page](https://falou-provou.onrender.com)** ·
+**[Código-fonte](https://github.com/ceciliagalvaoo/falou_provou)**
+
+## Assista à demo
+
+<div style={{position:'relative',paddingBottom:'56.25%',height:0,overflow:'hidden',maxWidth:'820px',margin:'0 auto',borderRadius:'4px',border:'1px solid var(--fp-hairline)'}}>
+  <iframe style={{position:'absolute',top:0,left:0,width:'100%',height:'100%',border:0}} src="https://www.youtube.com/embed/1YYHAs6ga1c" title="Falou e Provou: um agente que só registra o que consegue provar" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+</div>
+
+<div style={{textAlign:'center',opacity:0.75,marginTop:'0.9rem',fontSize:'0.85rem'}}>Um minuto e quarenta e quatro. A transação que aparece nele está na mainnet-beta, e você abre por conta própria.</div>
 
 ## A regra de ouro
 

@@ -386,3 +386,33 @@
   font-size: 0.9375rem;
   overflow-wrap: anywhere;
 }
+
+/* ---------- the demo video ---------- */
+
+.videoWrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3.5rem;
+}
+
+.videoWrap .eyebrow {
+  margin-bottom: 1rem;
+}
+
+/* Sixteen by nine, held by the padding trick so it scales on a phone. */
+.video {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--ifm-global-radius);
+  border: 1px solid var(--fp-hairline);
+}
+
+.video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

@@ -167,6 +167,18 @@ export default function Home(): React.ReactElement {
         </div>
       </header>
 
+      <section className={styles.videoWrap}>
+        <span className={styles.eyebrow}>The demo, in one minute forty four</span>
+        <div className={styles.video}>
+          <iframe
+            src="https://www.youtube.com/embed/1YYHAs6ga1c"
+            title="Falou e Provou: an agent that only records what it can prove"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        </div>
+      </section>
+
       <section className={styles.states}>
         <div className={styles.statesInner}>
           <span className={styles.eyebrow}>The golden rule</span>

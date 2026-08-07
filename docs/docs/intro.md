@@ -13,7 +13,17 @@ record anything it cannot independently verify at the source.
 Built for the Superteam Brasil bounty **"Build Solana-native plugins for
 Zeroclaw."**
 
-**Landing page:** [falou-provou.onrender.com](https://falou-provou.onrender.com)
+**[Watch the demo](https://youtu.be/1YYHAs6ga1c)** ·
+**[Landing page](https://falou-provou.onrender.com)** ·
+**[Source](https://github.com/ceciliagalvaoo/falou_provou)**
+
+## Watch the demo
+
+<div style={{position:'relative',paddingBottom:'56.25%',height:0,overflow:'hidden',maxWidth:'820px',margin:'0 auto',borderRadius:'4px',border:'1px solid var(--fp-hairline)'}}>
+  <iframe style={{position:'absolute',top:0,left:0,width:'100%',height:'100%',border:0}} src="https://www.youtube.com/embed/1YYHAs6ga1c" title="Falou e Provou: an agent that only records what it can prove" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+</div>
+
+<div style={{textAlign:'center',opacity:0.75,marginTop:'0.9rem',fontSize:'0.85rem'}}>One minute and forty four seconds. The transaction in it is on mainnet-beta, and you can open it yourself.</div>
 
 ## The golden rule
 

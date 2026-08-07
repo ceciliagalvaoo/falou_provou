@@ -7,11 +7,14 @@ An operator-hosted [ZeroClaw](https://github.com/zeroclaw-labs/zeroclaw) agent
 that bills in two rails, **USDC on Solana** and **Pix in BRL**, and
 never records anything it did not verify at the source.
 
-**Full documentation (the rule, architecture, security, real-world validation,
-deployment, reproducibility):**
-**[ceciliagalvaoo.github.io/falou_provou](https://ceciliagalvaoo.github.io/falou_provou/)**
+**[Watch the demo](https://youtu.be/1YYHAs6ga1c)** ·
+**[Read the documentation](https://ceciliagalvaoo.github.io/falou_provou/)** ·
+**[Open the landing page](https://falou-provou.onrender.com)** ·
+[Verify the mainnet transaction](https://explorer.solana.com/tx/3DSMW25MJ7eR7CkVwDwCMDZuum2MkyUGfHvBxxTq36BkrJnjJkBN1Ng5LtausUFjURzFH3LCpmENBmqkbRYNM58B)
 
-**Landing page:** **[falou-provou.onrender.com](https://falou-provou.onrender.com)**
+> The last link needs nothing from us to work. It is the transaction this whole
+> project is about, on mainnet-beta, finalized, and it is the only kind of proof
+> this product would accept from someone else.
 
 ## The idea
 
@@ -281,6 +284,21 @@ tooling/subscriptions-test/  isolated devnet tests for the recurring-delegation 
 landing/                     the public landing page (static HTML/CSS, no build step)
 docs/                        the Docusaurus documentation site
 ```
+
+And everything that lives outside the repository:
+
+| | |
+|---|---|
+| The demo video | https://youtu.be/1YYHAs6ga1c |
+| The landing page | https://falou-provou.onrender.com |
+| Documentation | https://ceciliagalvaoo.github.io/falou_provou |
+| The mainnet transaction, on a public explorer | [`3DSMW25M…kbrYNM58B`](https://explorer.solana.com/tx/3DSMW25MJ7eR7CkVwDwCMDZuum2MkyUGfHvBxxTq36BkrJnjJkBN1Ng5LtausUFjURzFH3LCpmENBmqkbRYNM58B) |
+| The rule, and where it is enforced | [the-golden-rule](https://ceciliagalvaoo.github.io/falou_provou/docs/how-it-works/the-golden-rule) |
+| Custody, and every attack run against the live agent | [security](https://ceciliagalvaoo.github.io/falou_provou/docs/how-it-works/security) |
+| Real signatures, real money | [validation](https://ceciliagalvaoo.github.io/falou_provou/docs/evidence/validation) |
+| Every bug found, and the ones still open | [bugs-found](https://ceciliagalvaoo.github.io/falou_provou/docs/evidence/bugs-found) |
+| Run it yourself | [reproducibility](https://ceciliagalvaoo.github.io/falou_provou/docs/using-it/reproducibility) |
+| The on-chain program the cap comes from | [`De1egAFM…si9avR44`](https://explorer.solana.com/address/De1egAFMkMWZSN5rYXRj9CAdheBamobVNubTsi9avR44) |
 
 ## Authors
 
