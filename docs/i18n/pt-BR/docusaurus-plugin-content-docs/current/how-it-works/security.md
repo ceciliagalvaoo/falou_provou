@@ -9,6 +9,33 @@ Esta página documenta o modelo de custódia, os ataques reais rodados contra o 
 transcrição, um trace ou uma assinatura reais: veja
 [Validação no mundo real](../evidence/validation.md) para a evidência crua.
 
+## Tier de custódia declarado: T2 em um caminho, T1 em todo o resto
+
+O bounty para o qual isto foi construído define três tiers e exige que toda submissão
+declare o seu e o defenda. Esta é a declaração, feita sem arredondar para baixo.
+
+**T1 cobre quase todo o produto.** Cobranças avulsas são URLs de Solana Pay que o cliente
+assina na carteira dele. A autorização de assinatura recorrente é assinada pelo cliente.
+Pagamentos a fornecedor são Blinks que um humano assina. Em nenhum desses o agente guarda
+segredo nem submete nada.
+
+**T2 cobre exatamente um caminho: a cobrança recorrente.** Uma chave dedicada assina e
+submete `transfer_recurring` sem humano no circuito. Chamar isso de T1 seria inflar, já que
+T1 exige não guardar segredo nenhum, e esta página não faz isso.
+
+T2 é descrito como aceitável apenas com teto de gasto rígido e allowlist de mint, uma chave
+de sessão com fundos limitados em vez da carteira principal, e um portão de aprovação. As
+três condições valem aqui:
+
+| Condição | Como é atendida |
+|---|---|
+| Teto de gasto rígido | Imposto pelo programa da Solana, não pelo nosso código de aplicação. Uma cobrança acima do teto é recusada on-chain, testado duas vezes de forma independente. O mint é USDC, fixo na config. |
+| Chave de sessão, nunca a carteira principal | O `agent-puller` é um par de chaves dedicado, separado da carteira do comerciante, sem fundos próprios. |
+| Portão de aprovação | A autorização on-chain do próprio cliente, dada uma vez e revogável por ele a qualquer momento, nunca pelo agente e nunca pelo comerciante. Pagamentos a fornecedor têm um segundo portão, mais rígido, fora do chat. |
+
+O teto não é promessa em prompt nem checagem no nosso código. É regra do programa da Solana,
+e é por isso que declarar T2 não custa nada a este projeto.
+
 ## Modelo de custódia: o que a chave do agente consegue de fato fazer
 O agente nunca segura uma chave sem teto. Existem três padrões de custódia distintos, usados para
 ações diferentes:

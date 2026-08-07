@@ -6,6 +6,31 @@ title: Security & Custody
 
 This page documents the custody model, real attacks run against the live agent, and the single incident that most shaped this project's design. Every claim below is backed by a real transcript, trace, or signature, see [Real-world validation](/docs/evidence/validation) for the raw evidence.
 
+## Declared custody tier: T2 for one path, T1 for everything else
+
+The bounty this was built for defines three tiers and asks every showcase to declare one
+and defend it. This is that declaration, made without rounding down.
+
+**T1 covers most of the product.** One-time invoices are Solana Pay URLs the client signs in
+their own wallet. Subscription authorization is signed by the client. Supplier payments are
+Blinks a human signs. In all of those the agent holds no secret and submits nothing.
+
+**T2 covers exactly one path: the recurring pull.** A dedicated key signs and submits
+`transfer_recurring` with no human in the loop. Calling that T1 would be inflating it, since
+T1 requires holding no secrets at all, and this page does not.
+
+T2 is described as acceptable only with a hard spend cap and mint allowlist, a session key
+holding limited funds rather than a main wallet, and an approval gate. All three hold here:
+
+| Condition | How it is met |
+|---|---|
+| Hard spend cap | Enforced by the Solana program, not by our application code. An over-cap pull is rejected on-chain, tested twice independently. The mint is USDC, fixed in config. |
+| Session key, never a main wallet | `agent-puller` is a dedicated keypair, separate from the merchant's wallet, holding no funds of its own. |
+| Approval gate | The client's own on-chain authorization, granted once and revocable by the client at any time, never by the agent and never by the merchant. Supplier payments carry a second, stricter gate outside the chat. |
+
+The cap is not a promise in a prompt and not a check in our code. It is a rule of the Solana
+program, which is why declaring T2 costs this project nothing to say out loud.
+
 ## Custody model: what the agent's key can actually do
 
 The agent never holds an unbounded key. There are three distinct custody patterns, used for different actions:
